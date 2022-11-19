@@ -13,4 +13,5 @@ class Alert < ApplicationRecord
     in_progress: 1,
     resolved: 2
   }
+  has_many_attached :photos
 end
