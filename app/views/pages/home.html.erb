@@ -4,6 +4,12 @@
   <%= link_to "Send an alert", root_path, class: "fs-5 fw-bold btn btn-primary rounded-pill" %>
 </div>
 <div class="container">
+
+  <div class="map-container d-flex justify-content-center mt-5">
+    <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/1000x400?access_token=#{ENV['MAPBOX_API_KEY']}",
+        class: "rounded-4",
+        style: "width: 1200px; height: 400px; object-fit:cover;" %>
+  </div>
   <h2 class="text-center my-4">About</h2>
   <div class="row">
     <div class="cards d-flex flex-row flex-wrap justify-content-between">
