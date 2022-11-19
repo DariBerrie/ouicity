@@ -1,5 +1,6 @@
 class Alert < ApplicationRecord
-  belongs_to :user
+  # belongs_to :user
+  belongs_to :creator, class_name: 'User'
 
   validates :title, :description, :category, :address, :upvotes, :status, presence: true
   validates :description, length: { in: 30..300,
