@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-puts "Destroying all users..."
-User.destroy_all
+
+
 puts "Destroying all alerts..."
 Alert.destroy_all
+
+puts "Destroying all users..."
+User.destroy_all
 # Create 5 users with resident role
 puts "Creating 5 users with resident role..."
 
@@ -52,7 +55,7 @@ puts "Creating 10 alerts..."
               '35 Rue du Chevalier de la Barre, Paris', '82 Bd de Clichy, Paris'].sample,
     upvotes: rand(1..10),
     status: 0,
-    creator_id: User.last.id
+    creator_id: User.where(role: 0).sample.id
   )
   alert.save!
 end
