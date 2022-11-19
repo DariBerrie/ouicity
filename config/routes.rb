@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
+  resources :contacts, only: [:new, :create]
+
   resources :alerts do
     resources :assignments, only: %i[index new edit update]
   end
