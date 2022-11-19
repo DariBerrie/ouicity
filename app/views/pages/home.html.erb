@@ -1,2 +1,69 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner w-100 d-flex flex-column justify-content-center align-items-center">
+  <h1>This revolution doesn't need a guillotine.</h1>
+  <h2>Improve your city with a simple alert!</h2>
+  <%= link_to "Send an alert", root_path, class: "fs-5 fw-bold btn btn-primary rounded-pill" %>
+</div>
+<div class="container">
+
+  <div class="map-container d-flex justify-content-center mt-5">
+    <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/1000x400?access_token=#{ENV['MAPBOX_API_KEY']}",
+        class: "rounded-4",
+        style: "width: 1200px; height: 400px; object-fit:cover;" %>
+  </div>
+  <h2 class="text-center my-4">About</h2>
+  <div class="row">
+    <div class="cards d-flex flex-row flex-wrap justify-content-between">
+      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
+        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
+          <%= image_tag "globe.png", width: 80, height: 80 %>
+          <h4 class="fw-bold mt-3">What is CityCare?</h4>
+          <p>CityCare is a desktop and mobile app geared toward residents who want to be more implicated
+          in their city’s well-being and cities who want to be more connected to the needs
+          of their residents.</p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
+        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
+          <%= image_tag "globe.png", width: 80, height: 80 %>
+          <h4 class="fw-bold mt-3">Why use it?</h4>
+          <p>CityCare is perfect for residents who want to communicate a specific need to
+          improve the quality of their neighborhood. Instead of going through a long bureaucratic
+          process, the app simplifies the process and puts you in direct contact with your
+          city officials. </p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
+        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
+          <%= image_tag "globe.png", width: 80, height: 80 %>
+          <h4 class="fw-bold mt-3">How does it work?</h4>
+          <p>You can identify a specific location where you will then be asked to create an
+          alert. Once created, your city team will take care of the rest! Sit back and relax! And,
+          of course, the city team will let you know once they've solved your alert.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="form-container d-flex flex-column align-items-center text-center">
+    <h2 class="text-center my-4">Contact Us</h2>
+    <%= form_for @contact, class: "d-flex flex-column align-items-center justify-content-center" do |f| %>
+        <%= f.text_field  :name, required: true,
+                          class: "form-control bg-white",
+                          placeholder: "Name" %></br>
+        <%= f.text_field :email, required: true,
+                         class: "form-control bg-white",
+                         placeholder: "Email" %></br>
+        <%= f.text_area :message, rows: 8, cols: 40, required: true, class: "form-control bg-white",
+              placeholder: "Tell us what's up!"%></br>
+
+          <div class= "d-none">
+            <%= f.label :nickname %>
+            <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+          </div>
+
+        <%= f.submit 'Send Message', class: 'btn btn-primary rounded-2' %>
+    <% end %>
+  </div>
+
+</div>
