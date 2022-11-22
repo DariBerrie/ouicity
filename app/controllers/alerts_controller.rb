@@ -2,6 +2,7 @@ class AlertsController < ApplicationController
   before_action :set_alert, only: %i[ show edit update destroy ]
 
   def index
+    @alerts = Alert.all
     # if params[:query].present?
     #   @alerts = Alert.search_by_everything(params[:query])
     # else
@@ -16,7 +17,6 @@ class AlertsController < ApplicationController
     #     image_url: helpers.asset_url("pin.png")
     #   }
     # end
-
   end
 
   def show
