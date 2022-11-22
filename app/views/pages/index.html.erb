@@ -6,13 +6,17 @@
 </div>
 
 <div class="container d-flex flex-column align-items-center">
-<h3 class="my-4">Send an alert</h3>
-<%= form_with url: pages_path, method: :get, class: "d-flex" do %>
-        <%= text_field_tag :query,
-          params[:query],
-          value: params[:query],
-          class: "form-control rounded-left background-white fs-6",
-          style: "width:500px;",
-          placeholder: "Enter an address..."%>
-<% end %>
+  <h3 class="my-4">Send an alert</h3>
+  <div data-controller="address-autocomplete"
+        data-address-autocomplete-api-key-value= "<%=ENV["MAPBOX_API_KEY"]%>">
+    <%= form_with url: pages_path, method: :get, class: "d-flex" do %>
+            <%= text_field_tag :query,
+              params[:query],
+              value: params[:query],
+              class: "d-none",
+              style: "width:500px;",
+              data: {address_autocomplete_target: "address", placeholder: "Enter an address..."},
+              placeholder: "Enter an address..."%>
+    <% end %>
+</div>
 </div>
