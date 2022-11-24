@@ -8,8 +8,6 @@ class User < ApplicationRecord
   has_many :assignments
   has_many :messages
 
-  validates :email, :first_name, :last_name, :address, :role, presence: true
-
   enum role: { resident: 0, worker: 1 }
 
   def set_default_role
