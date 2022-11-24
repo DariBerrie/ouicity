@@ -1,14 +1,15 @@
 <div class="banner w-100 d-flex flex-column justify-content-center align-items-center">
-  <h1>This revolution doesn't need a guillotine.</h1>
-  <h2>Improve your city with a simple alert!</h2>
-  <%= link_to "Send an alert", root_path, class: "fs-5 fw-bold btn btn-primary rounded-pill" %>
+  <h1>Together we'll get things done.</h1>
+  <h2>Improve your city with your action!</h2>
+  <%= link_to "Send an alert", pages_path, class: "fs-5 fw-bold btn btn-primary rounded-pill" %>
 </div>
 <div class="container">
 
   <div class="map-container d-flex justify-content-center mt-5">
-    <%= image_tag "https://api.mapbox.com/styles/v1/mapbox/streets-v11/static/2.3381,48.8693,10.45,0,0/1000x400?access_token=#{ENV['MAPBOX_API_KEY']}",
-        class: "rounded-4",
-        style: "width: 1200px; height: 400px; object-fit:cover;" %>
+    <div style="width: 100%; height: 400px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
   <h2 class="text-center my-4">About</h2>
   <div class="row">
@@ -16,20 +17,18 @@
       <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
         <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
           <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">What is CityCare?</h4>
-          <p>CityCare is a desktop and mobile app geared toward residents who want to be more implicated
-          in their city’s well-being and cities who want to be more connected to the needs
-          of their residents.</p>
+          <h4 class="fw-bold mt-3">What is Ouicity?</h4>
+          <p>We want to bring the joy back to city living! Even though we're all living amongst each other, we
+          can still feel at home. Part of being home is working together to keep it beautiful. Our app gets you directly
+          involved in your city’s well-being.</p>
         </div>
       </div>
       <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
         <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
           <%= image_tag "globe.png", width: 80, height: 80 %>
           <h4 class="fw-bold mt-3">Why use it?</h4>
-          <p>CityCare is perfect for residents who want to communicate a specific need to
-          improve the quality of their neighborhood. Instead of going through a long bureaucratic
-          process, the app simplifies the process and puts you in direct contact with your
-          city officials. </p>
+          <p>To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
+          We simplify the process and put you in direct contact with your city officials. </p>
         </div>
       </div>
       <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
@@ -62,7 +61,7 @@
             <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
           </div>
 
-        <%= f.submit 'Send Message', class: 'btn btn-primary rounded-2' %>
+        <%= f.submit 'Send Message', class: 'text-white btn btn-primary rounded-4' %>
     <% end %>
   </div>
 
