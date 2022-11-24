@@ -7,7 +7,8 @@ class User < ApplicationRecord
   has_many :assignments
   has_many :messages
 
-  validates :first_name, :last_name, :address, :role, presence: true
+  validates :email, presence: true
+  # :first_name, :last_name, :address, :role, presence: true
 
   enum role: { resident: 0, worker: 1 }
 end
