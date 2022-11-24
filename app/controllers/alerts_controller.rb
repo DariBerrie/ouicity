@@ -28,7 +28,13 @@ class AlertsController < ApplicationController
     # @time_ago = ((Time.new - @alert.created_at) / 1.day).round
   end
 
+  def my_alerts
+    @user = current_user
+    @alerts = Alert.where(creator: @user)
+  end
+
   def new
+    @alerts = Alert.all
     @alert = Alert.new
   end
 

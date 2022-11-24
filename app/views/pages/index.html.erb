@@ -6,10 +6,12 @@
           data-controller="map"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-target="map"></div>
+          data-map-target="map">
+        </div>
       </div>
       <h3 class="text-center my-4">Send an alert</h3>
       <div id="geocoder" class="geocoder"></div>
     </div>
   </div>
+
 </div>
