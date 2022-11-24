@@ -11,3 +11,10 @@
 @import "components/index";
 @import "pages/index";
 @import "components/banner";
+@import "components/alert_banner";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

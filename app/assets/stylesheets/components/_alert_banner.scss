@@ -1,0 +1,13 @@
+.alerts-container {
+  position: absolute;
+  bottom: 0;
+  z-index: 100;
+}
+
+.alerts-container.active {
+  bottom: 400px;
+}
+
+.alert-banner {
+  border: 1px solid red;
+}
