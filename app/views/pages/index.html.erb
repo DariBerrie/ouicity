@@ -6,7 +6,8 @@
 </div>
 
 <div class="container d-flex flex-column align-items-center">
-<h3 class="my-4">Send an alert</h3>
+<h3 class="fw-bold my-4">Send an alert</h3>
+<p>Let's get started! Tell us where the issue is located.</p>
 <%= form_with url: pages_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
           params[:query],
