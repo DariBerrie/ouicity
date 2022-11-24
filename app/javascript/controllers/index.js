@@ -3,6 +3,10 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application";
+import Carousel from 'stimulus-carousel'
+
+
+application.register('carousel', Carousel)
 
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
