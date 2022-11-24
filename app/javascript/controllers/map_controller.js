@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 
 // Connects to data-controller="map"
 export default class extends Controller {
@@ -6,6 +7,8 @@ export default class extends Controller {
     apiKey: String,
     markers: Array
   }
+  static targets = ["map"]
+
   connect() {
     mapboxgl.accessToken = this.apiKeyValue
 
@@ -16,6 +19,14 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
+
+    const geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                          mapboxgl: mapboxgl })
+
+    geocoder.options.placeholder = "Enter your address..."
+
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
+
   }
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
