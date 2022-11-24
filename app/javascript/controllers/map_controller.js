@@ -27,7 +27,7 @@ export default class extends Controller {
     geocoder.options.placeholder = "Enter your address..."
 
     document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
-
+    console.log(geocoder)
   }
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
