@@ -21,6 +21,7 @@ export default class extends Controller {
     this.#fitMapToMarkers()
 
     const geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+                                          countries: 'fr',
                                           mapboxgl: mapboxgl })
 
     geocoder.options.placeholder = "Enter your address..."
