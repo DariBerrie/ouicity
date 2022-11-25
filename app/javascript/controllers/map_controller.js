@@ -5,7 +5,8 @@ import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
 export default class extends Controller {
   static values = {
     apiKey: String,
-    markers: Array
+    markers: Array,
+    alerts: Array
   }
   static targets = ["map"]
 
@@ -25,8 +26,26 @@ export default class extends Controller {
                                           mapboxgl: mapboxgl })
 
     geocoder.options.placeholder = "Enter your address..."
-
     document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
+
+    geocoder.on('result', (event) => {
+      // const searchResult = event.result.geometry
+      // const options = { units: 'km' }
+      // this.markersValue.forEach((marker) => {
+      //   const markerPoint = new mapboxgl.Point(parseFloat(marker.lng), parseFloat(marker.lat))
+      //   markerPoint.distance = turf.distance(
+      //     searchResult,
+      //     markerPoint.geometry,
+      //     options
+      //   )
+      // })
+      // const listings = document.getElementById('listings');
+      // while (listings.firstChild) {
+      //   listings.removeChild(listings.firstChild);
+      // }
+      this.#buildAlertList()
+    })
+
 
   }
   #addMarkersToMap(){
@@ -44,4 +63,28 @@ export default class extends Controller {
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
+
+  #buildAlertList() {
+    this.alertsValue.forEach((alert) => {
+      const listings = document.getElementById('listings')
+      const listing = listings.appendChild(document.createElement('div'))
+      listing.id = `listing-${alert.id}`
+      listing.className = "item";
+
+      const link = listing.appendChild(document.createElement('a'))
+      link.href = "#"
+      link.className = "title"
+      link.id = `link-${alert.id}`
+      link.innerHTML = `${alert.address}`
+
+      const details = listing.appendChild(document.createElement('div'))
+      details.innerHTML = (`<strong>${alert.title}</strong><br><p>${alert.description}</p>`)
+      const alert_coordinates = [alert.longitude, alert.latitude]
+      if (alert_coordinates.distance) {
+        const roundedDistance = Math.round(alert_coordinates.distance * 100) / 100;
+        details.innerHTML += `<div><strong>${roundedDistance} kms away</strong></div>`
+      }
+    })
+  }
+
 }
