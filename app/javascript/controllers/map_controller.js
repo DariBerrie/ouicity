@@ -45,9 +45,8 @@ export default class extends Controller {
       // }
       this.#buildAlertList(this.alertsValue)
     })
-
-
   }
+  
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
