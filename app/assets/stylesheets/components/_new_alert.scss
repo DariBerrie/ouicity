@@ -41,7 +41,6 @@ border-radius: 4.2px;}
 
 .category-selector + label::before{
   content: '';
-  background: asset_url("category_placeholder.png");
   position:absolute;
   top:0px;
   left:0px;
