@@ -19,12 +19,12 @@ class AlertsController < ApplicationController
   #   # end
   # end
   def index
-    @alerts = Alert.all
-     if params[:query].present?
-      @alerts = Alert.search_by_everything(params[:query])
-     else
-      @alerts = Alert.all
-     end
+
+    if params[:query].present?
+      @alerts = Alert.includes(photos_attachments: :blob).near([2.294786, 48.85877975], 1)
+    else
+      @alerts = Alert.includes(photos_attachments: :blob).all
+    end
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,

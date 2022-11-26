@@ -29,24 +29,37 @@ export default class extends Controller {
     document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
 
     geocoder.on('result', (event) => {
-      // const searchResult = event.result.geometry
-      // const options = { units: 'km' }
-      // this.markersValue.forEach((marker) => {
-      //   const markerPoint = new mapboxgl.Point(parseFloat(marker.lng), parseFloat(marker.lat))
-      //   markerPoint.distance = turf.distance(
-      //     searchResult,
-      //     markerPoint.geometry,
-      //     options
-      //   )
-      // })
-      // const listings = document.getElementById('listings');
-      // while (listings.firstChild) {
-      //   listings.removeChild(listings.firstChild);
-      // }
-      this.#buildAlertList(this.alertsValue)
+      const searchResult = event.result.geometry
+      const options = { units: 'miles' }
+      const alerts = this.alertsValue
+      alerts.forEach((alert) => {
+        const alertPoint = new mapboxgl.Point(alert.longitude, alert.latitude)
+        alert.distance = turf.distance(
+          searchResult,
+          turf.point([alert.longitude, alert.latitude]),
+          options
+        )
+      })
+
+      alerts.sort((a, b) => {
+        if (a.distance > b.distance) {
+          return 1;
+        }
+        if (a.distance < b.distance) {
+          return -1;
+        }
+        return 0; // a must be equal to b
+      })
+
+      const listings = document.getElementById('listings');
+      while (listings.firstChild) {
+        listings.removeChild(listings.firstChild);
+      }
+      this.#buildAlertList(alerts)
     })
+
+
   }
-  
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
@@ -63,8 +76,8 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  #buildAlertList() {
-    this.alertsValue.forEach((alert) => {
+  #buildAlertList(alerts) {
+    alerts.forEach((alert) => {
       const listings = document.getElementById('listings')
       const listing = listings.appendChild(document.createElement('div'))
       listing.id = `listing-${alert.id}`
