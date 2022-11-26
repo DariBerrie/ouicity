@@ -17,12 +17,16 @@
   .listings {
     height: 100%;
     overflow: auto;
-    padding-bottom: 60px;
+    padding-top: 36px;
+    padding-bottom: 36px;
   }
 
-  .listings .item {
-    border-bottom: 1px solid #eee;
-    padding: 10px;
+  .listings .card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 25px;
+    padding: 16px;
+    margin-bottom: 16px;
     text-decoration: none;
   }
 
@@ -30,7 +34,7 @@
 
   .listings .item .title {
     display: block;
-    color: #00853e;
+    color: #0E0000;
     font-weight: 700;
   }
 
