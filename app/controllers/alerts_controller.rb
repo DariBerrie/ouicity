@@ -50,20 +50,34 @@ class AlertsController < ApplicationController
   end
 
   def new
-    @alerts = Alert.all
+    # @alerts = Alert.all
+    session[:alert_params] ||= {}
     @alert = Alert.new
+    @alert.current_step =  'category'
   end
 
   def create
-    @alert = Alert.create(alert_params)
+    session[:alert_params].deep_merge!(alert_params) if alert_params
+    @alert = Alert.new(alert_params)
     @alert.upvotes = 0
     @alert.status = 0
     @alert.creator_id = current_user.id
-    if @alert.save
-      redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
+    @alert.next_step
+
+    if params[:back_button]
+      @alert.previous_step
+    elsif @alert.last_step?
+      @alert.save!
+    # redirect_to alerts_path(), notice: "Thank you for sending your alert."
     else
-      render :new, status: :unprocessable_entity
+      @alert.next_step
     end
+    # session[:alert_step] = @alert.current_step
+    # if @alert.save
+    #   redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
+    # else
+    #  render :new, status: :unprocessable_entity
+    # end
   end
 
   def edit

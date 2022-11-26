@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller";
 application.register("map", MapController);
+
+import AlertController from "./alert_controller";
+application.register("alert", AlertController);

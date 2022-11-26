@@ -1,20 +1,11 @@
-<div class="newAlertContainer">
+<div class="newAlertContainer"  data-controller="alert">
   <div id="inputFields">
         <%= simple_form_for(@alert) do |f| %>
           <div class="form-input">
-          <%= f.input :category,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'category-wrapper',
-              item_wrapper_class: 'category-item',
-              input_html: {class: 'category-selector'},
-              collection: ["Vandalism", "Littering", "Broken Object", "Transportation", "New Idea", "Other"]%>
-            <%= f.input :title %>
-            <%= f.input :description %>
-            <%= f.input :address %>
-            <%= f.input :photos %>
+            <%= render "#{@alert.current_step}_step", :f => f %>
           </div>
-          <%= f.submit 'Create Alert', class: "btn btn-primary" %>
+          <%= f.submit 'Continue', class: "btn btn-primary"  %>
+          <%= f.submit 'Back', name: "back_button", class: "btn btn-primary" unless @alert.first_step? %>
         <% end %>
       </div>
     </div>
