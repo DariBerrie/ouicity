@@ -51,11 +51,18 @@ export default class extends Controller {
         return 0; // a must be equal to b
       })
 
+      const nearbyAlerts = []
+      alerts.forEach((alert) => {
+        if ((Math.round(alert.distance * 100) / 100) <= 2){
+          nearbyAlerts.push(alert)
+        }
+      })
+
       const listings = document.getElementById('listings');
       while (listings.firstChild) {
         listings.removeChild(listings.firstChild);
       }
-      this.#buildAlertList(alerts)
+      this.#buildAlertList(nearbyAlerts)
     })
 
 
