@@ -45,13 +45,12 @@ export default class extends Controller {
       // }
       this.#buildAlertList(this.alertsValue)
     })
-
-
   }
+  
   #addMarkersToMap(){
     this.markersValue.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.info_window)
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({color: '#fd1f3d'})
         .setLngLat([ marker.lng, marker.lat ])
         .setPopup(popup)
         .addTo(this.map)

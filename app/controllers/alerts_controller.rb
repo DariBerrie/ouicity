@@ -20,14 +20,13 @@ class AlertsController < ApplicationController
   # end
   def index
     @alerts = Alert.all
-    if params[:query].present?
+     if params[:query].present?
       @alerts = Alert.search_by_everything(params[:query])
-    else
+     else
       @alerts = Alert.all
-    end
+     end
     @markers = @alerts.geocoded.map do |alert|
       {
-        id: alert.id,
         lat: alert.latitude,
         lng: alert.longitude,
         info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )

@@ -15,12 +15,5 @@ class PagesController < ApplicationController
 
   def index
     @alerts = Alert.all
-    @markers = @alerts.geocoded.map do |alert|
-      {
-        lat: alert.latitude,
-        lng: alert.longitude,
-        info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )
-      }
-    end
   end
 end
