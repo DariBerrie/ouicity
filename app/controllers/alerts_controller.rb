@@ -21,9 +21,9 @@ class AlertsController < ApplicationController
   def index
 
     if params[:query].present?
-      @alerts = Alert.includes(photos_attachments: :blob).near([2.294786, 48.85877975], 1)
+      @alerts = Alert.near(params[:query], 1)
     else
-      @alerts = Alert.includes(photos_attachments: :blob).all
+      @alerts = Alert.all
     end
     @markers = @alerts.geocoded.map do |alert|
       {
@@ -32,6 +32,7 @@ class AlertsController < ApplicationController
         info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )
       }
     end
+
   end
 
   def show

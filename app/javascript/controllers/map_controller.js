@@ -82,28 +82,16 @@ export default class extends Controller {
       const listing = listings.appendChild(document.createElement('div'))
       listing.id = `listing-${alert.id}`
       listing.className = "item";
-
+      const roundedDistance = Math.round(alert.distance * 100) / 100;
       listing.innerHTML = `
         <div class="listing card">
           <a href="#">${alert.address}</a>
           <strong>${alert.title}</strong>
           <p>${alert.description}</p>
           <img src = "https://www.thisiscolossal.com/wp-content/uploads/2016/07/graf-11.jpg" width="80" height="50">
+          <strong>${roundedDistance} kms away</strong>
         </div>`
 
-      // const link = listing.appendChild(document.createElement('a'))
-      // link.href = "#"
-      // link.className = "title"
-      // link.id = `link-${alert.id}`
-      // link.innerHTML = `${alert.address}`
-
-      // const details = listing.appendChild(document.createElement('div'))
-      // details.innerHTML = (`<strong>${alert.title}</strong><br><p>${alert.description}</p>`)
-      // const alert_coordinates = [alert.longitude, alert.latitude]
-      // if (alert_coordinates.distance) {
-      //   const roundedDistance = Math.round(alert_coordinates.distance * 100) / 100;
-      //   details.innerHTML += `<div><strong>${roundedDistance} kms away</strong></div>`
-      // }
     })
   }
 
