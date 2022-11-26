@@ -2,7 +2,7 @@
   <div class="row align-items-center">
     <div class="col-12 col-lg-6">
       <div class="map-container">
-        <div style="width: 100%; height:90vh; margin-bottom:24px;"
+        <div class='map-size'
           data-controller="map"
           data-map-alerts-value="<%= @alerts.to_json %>"
           data-map-markers-value="<%= @markers.to_json %>"
@@ -11,22 +11,27 @@
         </div>
       </div>
     </div>
-    <div class="col-12 col-lg-6">
+    <div data-controller="alerts"  class="col-12 col-lg-6">
       <div class="search-box shadow">
         <h3>Hi <%= current_user.first_name %>!</h3>
         <h4>Can you tell us where the issue is?</h4>
         <div id="geocoder" class="geocoder"
              data-action="submit->map#buildAlertList"></div>
       </div>
-      <div id="listings" class="listings">
-        <div class="listings card">
-          <%= link_to "Alert address", root_path %>
-          <strong>Alert title</strong>
-          <p>Alert description: This is where we'll put the description
-          of the alert.</p>
-          <%= image_tag "graffiti.png", width:80, height:50 %>
-        </div>
+
+      <div class="d-flex justify-content-center mt-4 ">
+        <h3>Alerts in this area</h3>
+        <a data-action="click->alerts#showAlert" class="btn btn-primary rounded-right fs-3 text-white toggle">↓</a>
       </div>
+
+      <div data-alerts-target="list" id="listings" class="listings">
+        <% @alerts.each do |alert| %>
+        <%= render 'shared/alert_banner', alert: alert %>
+        <% end %>
+        <h3>Don't see your issue above?</h3>
+        <a class="btn btn-primary rounded fs-3 text-white" href="#">Send a new alert</a>
+      </div>
+
     </div>
   </div>
 </div>
