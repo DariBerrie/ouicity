@@ -20,6 +20,11 @@ class AlertsController < ApplicationController
   # end
   def index
     @alerts = Alert.all
+     if params[:query].present?
+      @alerts = Alert.search_by_everything(params[:query])
+     else
+      @alerts = Alert.all
+     end
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,
@@ -50,7 +55,9 @@ class AlertsController < ApplicationController
 
   def create
     @alert = Alert.create(alert_params)
-    @alert.user = current_user
+    @alert.upvotes = 0
+    @alert.status = 0
+    @alert.creator_id = current_user.id
     if @alert.save
       redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
     else

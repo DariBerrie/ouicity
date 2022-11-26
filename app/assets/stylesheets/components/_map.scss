@@ -10,3 +10,36 @@
   .mapboxgl-ctrl-geocoder {
   min-width: 100%;
   }
+
+  .listings {
+    height: 100%;
+    overflow: auto;
+    padding-top: 36px;
+    padding-bottom: 36px;
+  }
+
+  .listings .card {
+    background-color: white;
+    border: 1px solid #eee;
+    border-radius: 25px;
+    padding: 16px;
+    margin-bottom: 16px;
+    text-decoration: none;
+  }
+
+  .listings .item:last-child { border-bottom: none; }
+
+  .listings .item .title {
+    display: block;
+    color: #0E0000;
+    font-weight: 700;
+  }
+
+  .listings .item .title small { font-weight: 400; }
+
+  .listings .item.active .title,
+  .listings .item .title:hover { color: #8cc63f; }
+
+  .listings .item.active {
+    background-color: #f8f8f8;
+  }
