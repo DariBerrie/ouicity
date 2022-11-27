@@ -1,15 +1,17 @@
-<div class="container">
+<div class="container justify-content-center">
 <br />
 <h1>My Alerts</h1>
 
   <ul>
-    <% @alerts.each do |alert| %>
-      <li>
-      <b><%= alert.title %></b>
-      <em>Added <%= alert.created_at.strftime('%d %b %Y') %> </em>
-      <%= link_to "View", alert_path(alert), class: "btn btn-sm btn-warning" %>
-      </li>
-    <% end %>
+<div class="alert-banner">
+      <% @alerts.each do |alert| %>
+        <li>
+        <b><%= alert.title %></b>
+        <em>Added <%= alert.created_at.strftime('%d %b %Y') %> </em>
+        <%= link_to "View", alert_path(alert), class: "btn btn-sm btn-warning" %>
+        </li>
+      <% end %>
+</div>
   </ul>
 
 </div>

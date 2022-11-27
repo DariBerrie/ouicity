@@ -13,4 +13,5 @@ class User < ApplicationRecord
   def set_default_role
     self.role = 0
   end
+  acts_as_voter
 end
