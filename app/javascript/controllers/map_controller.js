@@ -63,6 +63,7 @@ export default class extends Controller {
         listings.removeChild(listings.firstChild);
       }
       this.#buildAlertList(nearbyAlerts)
+      this.#fitMapToAlerts(nearbyAlerts, searchResult)
     })
 
 
@@ -81,6 +82,14 @@ export default class extends Controller {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat]))
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+  }
+
+  #fitMapToAlerts(alerts, searchResult) {
+    const result = { latitude: searchResult.coordinates[1], longitude: searchResult.coordinates[0]}
+    alerts.push(result)
+    const bounds = new mapboxgl.LngLatBounds()
+    alerts.forEach(alert => bounds.extend([alert.longitude, alert.latitude]))
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 700 })
   }
 
   #buildAlertList(alerts) {
