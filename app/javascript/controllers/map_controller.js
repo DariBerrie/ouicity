@@ -30,7 +30,7 @@ export default class extends Controller {
 
     geocoder.on('result', (event) => {
       const searchResult = event.result.geometry
-      const options = { units: 'miles' }
+      const options = { units: 'kilometers' }
       const alerts = this.alertsValue
       alerts.forEach((alert) => {
         const alertPoint = new mapboxgl.Point(alert.longitude, alert.latitude)
