@@ -5,6 +5,7 @@ class Alert < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
+
   validates :title, :description, :category, :address, :upvotes, :status, presence: true
   validates :description, length: { in: 30..300,
                                     too_long: "%{count} characters is the maximum allowed",
