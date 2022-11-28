@@ -57,20 +57,29 @@ class AlertsController < ApplicationController
   end
 
   def create
+
     session[:alert_params].deep_merge!(alert_params) if alert_params
     @alert = Alert.new(alert_params)
     @alert.upvotes = 0
     @alert.status = 0
     @alert.creator_id = current_user.id
-    @alert.next_step
-
-    if params[:back_button]
-      @alert.previous_step
-    elsif @alert.last_step?
-      @alert.save!
-    # redirect_to alerts_path(), notice: "Thank you for sending your alert."
+    if @alert.valid?
+      if params[:back_button]
+        @alert.previous_step
+      elsif @alert.last_step?
+        @alert.save!
+        redirect_to alerts_path(), notice: "Thank you for sending your alert."
+      else
+        @alert.next_step
+      end
+      session[:alert_step] = @alert.current_step
+    end
+    if @alert.new_record?
+      render "new", status: 500
     else
-      @alert.next_step
+      session[:alert_step] = session[:alert_params] = nil
+      flash[:notice] = "Order saved!"
+      redirect_to @alert
     end
     # session[:alert_step] = @alert.current_step
     # if @alert.save
