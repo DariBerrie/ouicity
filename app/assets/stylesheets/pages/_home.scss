@@ -1,1 +1,48 @@
 // Specific CSS for your home-page
+.logo-font {
+  font-family: "Abril Fatface", cursive;
+  font-size: 60px;
+}
+.phone-container {
+  position: relative;
+
+  .phone-map-container {
+    position: absolute;
+    top: 32px;
+    left: 51px;
+  }
+}
+
+.carousel-row {
+  width: 100%;
+  padding: 36px 0 36px 0;
+  margin: 36px 0 36px 0;
+}
+
+.text-container {
+  margin-left: 24px;
+  width: 55%;
+}
+
+.carousel-img {
+  border-radius: 50%;
+  width: 300px;
+}
+
+.row{
+  position: relative;
+
+  .left-nav-icon {
+    width: 80px;
+    position: absolute;
+    top: 110px;
+    left: 48px;
+  }
+
+  .right-nav-icon {
+    width: 80px;
+    position: absolute;
+    top: 110px;
+    right: 76px;
+  }
+}

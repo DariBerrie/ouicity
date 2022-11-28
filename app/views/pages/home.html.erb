@@ -1,69 +1,88 @@
-<div class="banner w-100 d-flex flex-column justify-content-center align-items-center">
+<%# <div class="banner w-100 d-flex flex-column justify-content-center align-items-center">
   <h1>Together we'll get things done.</h1>
   <h2>Improve your city with your action!</h2>
-  <%= link_to "Send an alert", alerts_path, class: "fs-5 fw-bold btn btn-primary rounded-pill" %>
-</div>
-<div class="container">
+  <%= link_to "Send an alert", alerts_path, class: "fs-5 fw-bold btn btn-primary rounded-pill" </div> %>
 
-  <div class="map-container d-flex justify-content-center mt-5">
-    <div style="width: 100%; height: 400px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+<div class="container align-items-center">
+  <div class="banner-container d-flex flex-row justify-content-center align-items-center">
+    <div class="col-12 col-lg-6 title-container">
+      <h1><span class="logo-font" data-controller="typed-js"></span></h1>
+      <h1 class="pb-2">Together we'll get things done!</h1>
+      <h2 class="pb-2">Improve our city with your action.</h2>
+      <%= link_to "Send an alert", alerts_path, class: "fs-4 p-3 fw-bold btn btn-primary text-white rounded-pill" %>
+    </div>
+    <div class="col-12 col-lg-4 phone-container">
+      <%= image_tag "smartphone_mockup.png", height: 650 %>
+      <div class="phone-map-container">
+        <div style="width: 280px; height: 590px; border-radius: 39px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      </div>
+    </div>
   </div>
-  <h2 class="text-center my-4">About</h2>
-  <div class="row">
-    <div class="cards d-flex flex-row flex-wrap justify-content-between">
-      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
-        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
-          <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">What is Ouicity?</h4>
-          <p>We want to bring the joy back to city living! Even though we're all living amongst each other, we
-          can still feel at home. Part of being home is working together to keep it beautiful. Our app gets you directly
-          involved in your city’s well-being.</p>
-        </div>
-      </div>
-      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
-        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
-          <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">Why use it?</h4>
-          <p>To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
-          We simplify the process and put you in direct contact with your city officials. </p>
+</div>
 
+<div class="carousel-row bg-primary" style=" background-image: var(--bs-gradient);">
+  <div data-controller="carousel" class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide w-100">
+        <div class="row flex-wrap justify-content-center align-items-center">
+          <%= image_tag "blow_kisses.png", class: "carousel-img" %>
+          <div class="text-container">
+            <h3 class="fw-bold text-white">What is <span class="logo-font fs-2">Ouicity</span>?</h3>
+            <p class="fs-5 text-white">We want to bring the joy back to city living! Even though we're all living amongst each other, we
+            can still feel at home. Part of being home is working together to keep it beautiful. Our app gets you directly
+            involved in your city’s well-being.</p>
+          </div>
+          <%= image_tag "right_arrow.png", class: "right-nav-icon" %>
         </div>
       </div>
-      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
-        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
-          <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">How does it work?</h4>
-          <p>You can identify a specific location where you will then be asked to create an
-          alert. Once created, your city team will take care of the rest! Sit back and relax! And,
-          of course, the city team will let you know once they've solved your alert.</p>
+      <div class="swiper-slide w-100 d-flex flex-column align-items-center">
+        <div class="row flex-wrap justify-content-center align-items-center">
+          <%= image_tag "left_arrow.png", class: "left-nav-icon" %>
+          <%= image_tag "man_on_bike.png", class: "carousel-img" %>
+          <div class="text-container">
+            <h3 class="fw-bold text-white">Why use it?</h3>
+            <p class="fs-5 text-white">To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
+            We simplify the process and put you in direct contact with your city officials. </p>
+          </div>
+          <%= image_tag "right_arrow.png", class: "right-nav-icon" %>
+        </div>
+      </div>
+      <div class="swiper-slide w-100 d-flex flex-column align-items-center">
+        <div class="row flex-wrap justify-content-center align-items-center">
+          <%= image_tag "left_arrow.png", class: "left-nav-icon" %>
+          <%= image_tag "paris_worker.png", class: "carousel-img" %>
+          <div class="text-container">
+            <h3 class="fw-bold text-white">How does it work?</h3>
+            <p class="fs-5 text-white">You can identify a specific location where you will then be asked to create an
+            alert. Once created, your city team will take care of the rest! Sit back and relax! And,
+            of course, the city team will let you know once they've solved your alert.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-  <div class="form-container d-flex flex-column align-items-center text-center">
-    <h2 class="text-center my-4">Contact Us</h2>
-    <%= form_for @contact, class: "d-flex flex-column align-items-center justify-content-center" do |f| %>
-        <%= f.text_field  :name, required: true,
-                          class: "form-control bg-white",
-                          placeholder: "Name" %></br>
-        <%= f.text_field :email, required: true,
-                         class: "form-control bg-white",
-                         placeholder: "Email" %></br>
-        <%= f.text_area :message, rows: 8, cols: 40, required: true, class: "form-control bg-white",
-              placeholder: "Tell us what's up!"%></br>
+<div class="form-container d-flex flex-column align-items-center text-center">
+  <h1 class="text-center my-4">Contact Us</h1>
+  <%= form_for @contact, class: "d-flex flex-column align-items-center justify-content-center" do |f| %>
+      <%= f.text_field  :name, required: true,
+                        class: "form-control bg-white border-0 shadow-sm",
+                        placeholder: "Name" %></br>
+      <%= f.text_field :email, required: true,
+                        class: "form-control bg-white border-0 shadow-sm",
+                        placeholder: "Email" %></br>
+      <%= f.text_area :message, rows: 8, cols: 40, required: true, class: "form-control bg-white border-0 shadow-sm",
+            placeholder: "Tell us what's up!"%></br>
 
-          <div class= "d-none">
-            <%= f.label :nickname %>
-            <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
-          </div>
+        <div class= "d-none">
+          <%= f.label :nickname %>
+          <%= f.text_field :nickname, :hint => 'Leave this field blank!' %>
+        </div>
 
-        <%= f.submit 'Send Message', class: 'text-white btn btn-primary rounded-4' %>
-    <% end %>
-  </div>
-
+      <%= f.submit 'Send Message', class: 'text-white btn btn-primary rounded-4' %>
+  <% end %>
 </div>
