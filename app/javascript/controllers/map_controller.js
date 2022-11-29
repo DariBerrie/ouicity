@@ -29,22 +29,44 @@ export default class extends Controller {
     document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
 
     geocoder.on('result', (event) => {
-      // const searchResult = event.result.geometry
-      // const options = { units: 'km' }
-      // this.markersValue.forEach((marker) => {
-      //   const markerPoint = new mapboxgl.Point(parseFloat(marker.lng), parseFloat(marker.lat))
-      //   markerPoint.distance = turf.distance(
-      //     searchResult,
-      //     markerPoint.geometry,
-      //     options
-      //   )
-      // })
-      // const listings = document.getElementById('listings');
-      // while (listings.firstChild) {
-      //   listings.removeChild(listings.firstChild);
-      // }
-      this.#buildAlertList(this.alertsValue)
+      const searchResult = event.result.geometry
+      const options = { units: 'kilometers' }
+      const alerts = this.alertsValue
+      alerts.forEach((alert) => {
+        const alertPoint = new mapboxgl.Point(alert.longitude, alert.latitude)
+        alert.distance = turf.distance(
+          searchResult,
+          turf.point([alert.longitude, alert.latitude]),
+          options
+        )
+      })
+
+      alerts.sort((a, b) => {
+        if (a.distance > b.distance) {
+          return 1;
+        }
+        if (a.distance < b.distance) {
+          return -1;
+        }
+        return 0; // a must be equal to b
+      })
+
+      const nearbyAlerts = []
+      alerts.forEach((alert) => {
+        if ((Math.round(alert.distance * 100) / 100) <= 2){
+          nearbyAlerts.push(alert)
+        }
+      })
+
+      const listings = document.getElementById('listings');
+      while (listings.firstChild) {
+        listings.removeChild(listings.firstChild);
+      }
+      this.#buildAlertList(nearbyAlerts)
+      this.#fitMapToAlerts(nearbyAlerts, searchResult)
     })
+
+
   }
 
   #addMarkersToMap(){
@@ -63,34 +85,30 @@ export default class extends Controller {
     this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
   }
 
-  #buildAlertList() {
-    this.alertsValue.forEach((alert) => {
+  #fitMapToAlerts(alerts, searchResult) {
+    const result = { latitude: searchResult.coordinates[1], longitude: searchResult.coordinates[0]}
+    alerts.push(result)
+    const bounds = new mapboxgl.LngLatBounds()
+    alerts.forEach(alert => bounds.extend([alert.longitude, alert.latitude]))
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 700 })
+  }
+
+  #buildAlertList(alerts) {
+    alerts.forEach((alert) => {
       const listings = document.getElementById('listings')
       const listing = listings.appendChild(document.createElement('div'))
       listing.id = `listing-${alert.id}`
       listing.className = "item";
-
+      const roundedDistance = Math.round(alert.distance * 100) / 100;
       listing.innerHTML = `
         <div class="listing card">
           <a href="#">${alert.address}</a>
           <strong>${alert.title}</strong>
           <p>${alert.description}</p>
           <img src = "https://www.thisiscolossal.com/wp-content/uploads/2016/07/graf-11.jpg" width="80" height="50">
+          <strong>${roundedDistance} kms away</strong>
         </div>`
 
-      // const link = listing.appendChild(document.createElement('a'))
-      // link.href = "#"
-      // link.className = "title"
-      // link.id = `link-${alert.id}`
-      // link.innerHTML = `${alert.address}`
-
-      // const details = listing.appendChild(document.createElement('div'))
-      // details.innerHTML = (`<strong>${alert.title}</strong><br><p>${alert.description}</p>`)
-      // const alert_coordinates = [alert.longitude, alert.latitude]
-      // if (alert_coordinates.distance) {
-      //   const roundedDistance = Math.round(alert_coordinates.distance * 100) / 100;
-      //   details.innerHTML += `<div><strong>${roundedDistance} kms away</strong></div>`
-      // }
     })
   }
 
