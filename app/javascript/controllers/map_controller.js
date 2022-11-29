@@ -26,7 +26,9 @@ export default class extends Controller {
                                           mapboxgl: mapboxgl })
 
     geocoder.options.placeholder = "Enter your address..."
-    document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
+    if (document.getElementById('geocoder')) {
+      document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
+    }
 
     geocoder.on('result', (event) => {
       const searchResult = event.result.geometry
@@ -65,8 +67,6 @@ export default class extends Controller {
       this.#buildAlertList(nearbyAlerts)
       this.#fitMapToAlerts(nearbyAlerts, searchResult)
     })
-
-
   }
 
   #addMarkersToMap(){
@@ -100,13 +100,19 @@ export default class extends Controller {
       listing.id = `listing-${alert.id}`
       listing.className = "item";
       const roundedDistance = Math.round(alert.distance * 100) / 100;
+
       listing.innerHTML = `
-        <div class="listing card">
-          <a href="#">${alert.address}</a>
-          <strong>${alert.title}</strong>
-          <p>${alert.description}</p>
-          <img src = "https://www.thisiscolossal.com/wp-content/uploads/2016/07/graf-11.jpg" width="80" height="50">
-          <strong>${roundedDistance} kms away</strong>
+        <div class="listing card shadow-sm d-flex flex-row
+                    justify-content-center">
+          <img class="me-3"
+               src="${alert.photos[0].url}"
+               style="width:80px; height:80px; border-radius:50%;">
+          <div class="listing-details">
+            <a href="#">${alert.address}</a><br>
+            <strong>${alert.title}</strong>
+            <p class="fs-6">${alert.description}<br>
+            <strong>${roundedDistance} kms away</strong></p>
+          </div>
         </div>`
 
     })

@@ -5,15 +5,10 @@
 .geocoder {
   position: relative;
   z-index: 1;
-  width: 50%;
-  left: 50%;
-  margin-left: -25%;
-  top: 10px;
-}
-.mapboxgl-ctrl-geocoder {
   width: 100%;
 }
 .mapboxgl-ctrl-geocoder {
+  width: 100%;
   min-width: 100%;
 }
 

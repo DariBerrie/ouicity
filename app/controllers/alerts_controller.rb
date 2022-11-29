@@ -2,30 +2,8 @@ class AlertsController < ApplicationController
   before_action :set_alert, only: %i[ show like edit update destroy ]
   before_action :authenticate_user!, only: %i[ like ]
 
-  # def index
-  #   @alerts = Alert.all
-  #   # if params[:query].present?
-  #   #   @alerts = Alert.search_by_everything(params[:query])
-  #   # else
-  #   #   @alerts = Alert.all
-  #   # end
-
-  #   # @markers = @alerts.geocoded.map do |alert|
-  #   #   {
-  #   #     lat: alert.latitude,
-  #   #     lng: alert.longitude,
-  #   #     info_window: render_to_string(partial: "info_window", locals: { alert: alert }),
-  #   #     image_url: helpers.asset_url("pin.png")
-  #   #   }
-  #   # end
-  # end
   def index
-
-    if params[:query].present?
-      @alerts = Alert.near(params[:query], 1)
-    else
-      @alerts = Alert.all
-    end
+    @alerts = Alert.all
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,
@@ -33,7 +11,6 @@ class AlertsController < ApplicationController
         info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )
       }
     end
-
   end
 
   def show
