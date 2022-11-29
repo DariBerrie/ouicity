@@ -1,5 +1,5 @@
 meta_name: "Ouicity"
 meta_title: "Ouicity - Together we'll get things done."
 meta_description: "Alert your city when something needs to change."
-meta_image: "ouicity_banner.png" # should exist in `app/assets/images/`
-twitter_account: "@your_twitter_account"   # required for Twitter Cards
+meta_image: "ouicity_meta_img.png" # should exist in `app/assets/images/`
+twitter_account: "@your_twitter_account" # required for Twitter Cards
