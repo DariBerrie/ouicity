@@ -1,0 +1,15 @@
+<div class="newAlertContainer">
+  <h2>Details</h2>
+  <div id="inputFields">
+        <%= simple_form_for(@detail) do |f| %>
+          <div class="form-input">
+            <%= f.input :title %>
+            <%= f.input :description %>
+            <%= f.input :address %>
+            <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          </div>
+          <%= f.submit 'Create Alert', class: "btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+</div>
