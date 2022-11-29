@@ -11,6 +11,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
     <script src='https://npmcdn.com/@turf/turf/turf.min.js'></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
     <%= favicon_link_tag asset_path('ouicity_logo.png') %>
   </head>
 
@@ -19,5 +21,6 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
