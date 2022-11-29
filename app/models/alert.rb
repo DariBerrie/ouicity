@@ -11,6 +11,8 @@ class Alert < ApplicationRecord
                                     too_long: "%{count} characters is the maximum allowed",
                                     too_short: "%{count} characters is the minimum required" }
 
+  acts_as_votable
+
   # These statuses are placeholders until we have a better idea
   # of what they should be.
   enum status: {

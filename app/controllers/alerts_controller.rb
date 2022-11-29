@@ -1,5 +1,6 @@
 class AlertsController < ApplicationController
-  before_action :set_alert, only: %i[ show edit update destroy ]
+  before_action :set_alert, only: %i[ show like edit update destroy ]
+  before_action :authenticate_user!, only: %i[ like ]
 
   # def index
   #   @alerts = Alert.all
@@ -36,12 +37,11 @@ class AlertsController < ApplicationController
   end
 
   def show
-    # @suggested_alerts = Alert.all.sample(8)
-    # @marker = {
-    #   lat: @alert.geocode[0], lng: @alert.geocode[1],
-    #   image_url: helpers.asset_url("loopyex.png")
-    # }
-    # @time_ago = ((Time.new - @alert.created_at) / 1.day).round
+    @marker = {
+      lat: @alert.geocode[0],
+      lng: @alert.geocode[1],
+      image_url: helpers.asset_url("pin.png")
+    }
   end
 
   def my_alerts
@@ -80,6 +80,15 @@ class AlertsController < ApplicationController
   def destroy
     @alert.destroy
     redirect_to alerts_path, status: :see_other
+  end
+
+  def like
+    if current_user.voted_for? @alert
+      @alert.unliked_by current_user
+    else
+      @alert.liked_by current_user
+    end
+    redirect_to alert_path(@alert)
   end
 
   private

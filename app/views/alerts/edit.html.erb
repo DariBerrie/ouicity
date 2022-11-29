@@ -1,0 +1,47 @@
+<div class="container">
+  <br><br>
+  <h2>Edit this alert</h2>
+    <div id="inputFields">
+      <%= simple_form_for(@alert) do |f| %>
+        <div class="form-input">
+
+          <%= f.input :category,
+                as: :select,
+                collection: ["Vandalism", "Littering", "Broken Object", "Transportation", "New Idea", "Other"], selected: { value: @alert.category }%>
+            <%= f.input :title, input_html: { value: @alert.title } %>
+            <%= f.input :description, input_html: { value: @alert.description } %>
+            <%= f.input :address, input_html: { value: @alert.address } %>
+              <div class="d-flex justify-content-left">
+                <% if @alert.photos.attached? %>
+                  <% @alert.photos.each do |attach| %>
+                    <%= cl_image_tag attach.key, width: 200, height: 150, crop: :fill, class: "mx-2 my-3 rounded-4" %>
+                    <%= f.hidden_field :photos, value: attach.signed_id %>
+                  <% end %>
+                <% end %>
+              </div>
+            <%= f.input :photos, multiple: true, label: false %>
+
+
+            <%= f.button :submit, "Update", class: "btn btn-primary" %>
+          <br>
+          <br>
+
+          <%= link_to alert_path(@alert) do %>
+            <h4><i class="fa-solid fa-backward"></i></h4>
+      <% end %>
+
+          <br>
+          <br>
+
+      <h6>Is this alert is no longer valid?</h6>
+        <%= link_to "Delete alert", alert_path(@alert),
+            data: { confirm: "Are you sure?" },
+            method: :delete %>
+        <% end %>
+
+
+        </div>
+                  <br>
+          <br>
+    </div>
+</div>
