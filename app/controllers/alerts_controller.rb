@@ -37,11 +37,11 @@ class AlertsController < ApplicationController
   end
 
   def show
-    # @marker = {
-      # lat: @alert.geocode[0], lng: @alert.geocode[1],
-      # image_url: helpers.asset_url("pin.png")
-    # }
-    # @time_ago = ((Time.new - @alert.created_at) / 1.day).round
+    @marker = {
+      lat: @alert.geocode[0],
+      lng: @alert.geocode[1],
+      image_url: helpers.asset_url("pin.png")
+    }
   end
 
   def my_alerts

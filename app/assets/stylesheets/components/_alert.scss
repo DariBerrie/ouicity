@@ -22,6 +22,21 @@
   height: 300px;
 }
 
+// My Alerts page styling
+
+.my-alert-card {
+  border: 1px solid rgb(208, 207, 207);
+  border-radius: 50px;
+  padding: 16px 32px;
+  margin: 8px 0 8px 0;
+  width: fit-content;
+  justify-content: space-between;
+}
+
+.my-alert-card .btn {
+  border-radius: 50px;
+}
+
 // Alert show page styling
 
 .fa-check {
