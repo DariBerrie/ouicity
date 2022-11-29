@@ -4,18 +4,20 @@
 
 import { application } from "./application"
 
-import AddressAutocompleteController from "./address_autocomplete_controller";
-application.register("address-autocomplete", AddressAutocompleteController);
+import AddressAutocompleteController from "./address_autocomplete_controller"
+application.register("address-autocomplete", AddressAutocompleteController)
 
-import HelloController from "./hello_controller";
-application.register("hello", HelloController);
+import AlertShowMapController from "./alert_show_map_controller"
+application.register("alert-show-map", AlertShowMapController)
+
+import AlertsController from "./alerts_controller"
+application.register("alerts", AlertsController)
+
+import HelloController from "./hello_controller"
+application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
 
 import TypedJsController from "./typed_js_controller"
 application.register("typed-js", TypedJsController)
-
-import AlertsController from "./alerts_controller";
-application.register("alerts", AlertsController);
-

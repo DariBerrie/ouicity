@@ -66,13 +66,12 @@
 
     <div class="column">
 
-      <div class="container">
-        <div style="width: 100%; height: 90vh; margin-bottom:24px;"
-          data-controller="map"
-          data-map-alerts-value="<%= @alert.to_json %>"
-          data-map-markers-value="<%= @marker.to_json %>"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-target="map">
+      <div class="map-container">
+        <div style="width: 100%; height: 500px;"
+          data-controller="alert-show-map"
+          data-alert-show-map-marker-value="<%= @marker.to_json %>"
+          data-alert-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-alert-show-map-target="map">
         </div>
       </div>
 
