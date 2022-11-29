@@ -12,35 +12,46 @@
     data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
   </div>
   <h2 class="text-center my-4">About</h2>
-  <div class="row">
-    <div class="cards d-flex flex-row flex-wrap justify-content-between">
-      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
-        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
-          <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">What is Ouicity?</h4>
-          <p>We want to bring the joy back to city living! Even though we're all living amongst each other, we
-          can still feel at home. Part of being home is working together to keep it beautiful. Our app gets you directly
-          involved in your city’s well-being.</p>
-        </div>
-      </div>
-      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
-        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
-          <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">Why use it?</h4>
-          <p>To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
-          We simplify the process and put you in direct contact with your city officials. </p>
 
+  <div class="row">
+    <div class="swiper" style="width: 100%">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
+            <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
+              <%= image_tag "globe.png", width: 80, height: 80 %>
+              <h4 class="fw-bold mt-3">What is Ouicity?</h4>
+              <p>We want to bring the joy back to city living! Even though we're all living amongst each other, we
+              can still feel at home. Part of being home is working together to keep it beautiful. Our app gets you directly
+              involved in your city’s well-being.</p>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
+            <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
+              <%= image_tag "globe.png", width: 80, height: 80 %>
+              <h4 class="fw-bold mt-3">Why use it?</h4>
+              <p>To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
+              We simplify the process and put you in direct contact with your city officials. </p>
+
+            </div>
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
+            <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
+              <%= image_tag "globe.png", width: 80, height: 80 %>
+              <h4 class="fw-bold mt-3">How does it work?</h4>
+              <p>You can identify a specific location where you will then be asked to create an
+              alert. Once created, your city team will take care of the rest! Sit back and relax! And,
+              of course, the city team will let you know once they've solved your alert.</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-12 col-lg-3 d-flex flex-column align-items-center mx-2">
-        <div class="homepage-card d-flex flex-column align-items-center" style="width: 300px">
-          <%= image_tag "globe.png", width: 80, height: 80 %>
-          <h4 class="fw-bold mt-3">How does it work?</h4>
-          <p>You can identify a specific location where you will then be asked to create an
-          alert. Once created, your city team will take care of the rest! Sit back and relax! And,
-          of course, the city team will let you know once they've solved your alert.</p>
-        </div>
-      </div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button next"></div>
     </div>
   </div>
 </div>
