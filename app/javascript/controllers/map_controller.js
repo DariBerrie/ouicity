@@ -100,10 +100,10 @@ export default class extends Controller {
       listing.id = `listing-${alert.id}`
       listing.className = "item";
       const roundedDistance = Math.round(alert.distance * 100) / 100;
-
+      const alertsHeading = document.getElementById('alerts-heading')
+      this.buildAlertsHeading()
       listing.innerHTML = `
-        <div class="listing card shadow-sm d-flex flex-row
-                    justify-content-center">
+        <div class="listing card shadow-sm d-flex flex-row">
           <img class="me-3"
                src="${alert.photos[0].url}"
                style="width:80px; height:80px; border-radius:50%;">
@@ -115,7 +115,17 @@ export default class extends Controller {
           </div>
         </div>`
 
+
     })
   }
+  buildAlertsHeading(){
+    const alertsHeading = document.getElementById('alerts-heading')
+    alertsHeading.innerHTML= `
+      <h5 id="alerts-heading">Alerts in this area
+      <a data-action="click->alerts#showAlertList"
+      class="fs-4 toggle">
+      <i class="fa-solid fa-circle-chevron-down"></i></a></h5>`
+  }
+
 
 }
