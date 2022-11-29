@@ -16,7 +16,7 @@ class Alert < ApplicationRecord
   # These statuses are placeholders until we have a better idea
   # of what they should be.
   enum status: {
-    unassigned: 0,
+    submitted: 0,
     in_progress: 1,
     resolved: 2
   }

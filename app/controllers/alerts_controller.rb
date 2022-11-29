@@ -37,11 +37,11 @@ class AlertsController < ApplicationController
   end
 
   def show
-    @marker = {
-      lat: @alert.geocode[0],
-      lng: @alert.geocode[1],
-      image_url: helpers.asset_url("pin.png")
-    }
+    # @marker = {
+    #   lat: @alert.geocode[0],
+    #   lng: @alert.geocode[1],
+    #   image_url: helpers.asset_url("pin.png")
+    # }
   end
 
   def my_alerts
