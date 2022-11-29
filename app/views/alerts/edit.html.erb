@@ -6,7 +6,7 @@
         <div class="form-input">
 
           <%= f.input :category,
-                as: :select,
+                as: :radio_buttons,
                 collection: ["Vandalism", "Littering", "Broken Object", "Transportation", "New Idea", "Other"], selected: { value: @alert.category }%>
             <%= f.input :title, input_html: { value: @alert.title } %>
             <%= f.input :description, input_html: { value: @alert.description } %>

@@ -38,7 +38,11 @@
               <br>Category: <%= @alert.category %>
               <p class="pe-5 mb-2"><%= @alert.description %>
               <br>
-              <br>Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %></p>
+              <% if @alert.creator == current_user %>
+                <br>Added by: You on <%= @alert.created_at.strftime('%d %b %Y') %></p>
+              <% else %>
+                <br>Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %></p>
+               <% end %>
               <br>Status: <%= @alert.status %></p>
               <br>
               <%# Upvotes %>
