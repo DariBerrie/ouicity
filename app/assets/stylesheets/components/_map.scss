@@ -23,6 +23,8 @@
   margin-bottom: 24px;
 }
 
+// Container for the alerts
+
 .listings {
   height: 100%;
   overflow: auto;
@@ -74,3 +76,10 @@
     height: 80vh;
   }
 }
+
+// // Mobile size on small screens .listing hidden
+// @media (max-width: 768px) {
+//   .listings {
+//     display: none;
+//   }
+// }

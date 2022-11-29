@@ -25,11 +25,15 @@
       </div>
 
       <div data-alerts-target="list" id="listings" class="listings">
+        <% @alerts = @alerts.order(created_at: :desc) %>
         <% @alerts.each do |alert| %>
         <%= render 'shared/alert_banner', alert: alert %>
         <% end %>
+        <div class="container text-center justify-content-center">
         <h3>Don't see your issue above?</h3>
-        <a class="btn btn-primary rounded fs-3 text-white" href="#">Send a new alert</a>
+        <%=link_to "Create a new alert", new_intake_category_path, class: "btn btn-primary rounded-right fs-3 text-white"  %>
+        </div>
+
       </div>
 
     </div>
