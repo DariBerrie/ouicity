@@ -13,13 +13,9 @@ module Intake
           category: session['category']['category'],
           creator_id: current_user.id,
           status: 0,
-          upvotes: 0
-        )
-
-        Alert.create!(full_params)
-
+          upvotes: 0)
+        @alert = Alert.create!(full_params)
         session.delete('detail')
-
         redirect_to alert_path(@alert)
       else
         render :new
