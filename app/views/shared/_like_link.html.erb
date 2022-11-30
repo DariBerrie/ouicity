@@ -1,0 +1,7 @@
+<%= link_to like_alert_path(alert), data: { turbo_method: :put }, remote: :true, class: 'like-post text-decoration-none' do %>
+  <% if current_user&.voted_for?(alert) %>
+    <i class="fa-solid fa-thumbs-up fs-3 text-success"></i>
+  <% else %>
+    <i class="fa-solid fa-circle-up fs-3 text-primary"></i>
+  <% end %>
+<% end %>

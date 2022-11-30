@@ -1,7 +1,0 @@
-<%= link_to like_alert_path(alert), data: { turbo_method: :put }, remote: :true, class: 'like-post' do %>
-  <% if current_user&.voted_for?(alert) %>
-    <i class="fa-solid fa-check fa-red"></i>
-  <% else %>
-    <i class="fa-solid fa-arrow-up"></i>
-  <% end %>
-<% end %>
