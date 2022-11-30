@@ -3,12 +3,7 @@ class AlertsController < ApplicationController
   before_action :authenticate_user!, only: %i[ like ]
 
   def index
-
-    if params[:query].present?
-      @alerts = Alert.near(params[:query], 1)
-    else
-      @alerts = Alert.all
-    end
+    @alerts = Alert.all
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,
@@ -16,7 +11,6 @@ class AlertsController < ApplicationController
         info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )
       }
     end
-
   end
 
   def show

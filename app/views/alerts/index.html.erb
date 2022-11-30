@@ -4,7 +4,7 @@
       <div class="map-container">
         <div class='map-size'
           data-controller="map"
-          data-map-alerts-value="<%= @alerts.to_json %>"
+          data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
           data-map-target="map">
@@ -12,28 +12,19 @@
       </div>
     </div>
     <div data-controller="alerts"  class="col-12 col-lg-6">
-      <div class="search-box shadow">
+      <div class="search-box shadow-sm d-flex flex-column w-100">
         <h3>Hi <%= current_user.first_name %>!</h3>
         <h4>Can you tell us where the issue is?</h4>
+        <p>Don't see your issue above? <%= link_to "Send an alert.", new_intake_category_path %></p>
         <div id="geocoder" class="geocoder"
              data-action="submit->map#buildAlertList"></div>
       </div>
 
       <div class="d-flex justify-content-center mt-4 ">
-        <h3>Alerts in this area</h3>
-        <a data-action="click->alerts#showAlertList" class="btn btn-primary rounded-right fs-3 text-white toggle">↓</a>
+        <h5 id="alerts-heading">Alerts in this area</h5>
       </div>
 
       <div data-alerts-target="list" id="listings" class="listings">
-        <% @alerts = @alerts.order(created_at: :desc) %>
-        <% @alerts.each do |alert| %>
-        <%= render 'shared/alert_banner', alert: alert %>
-        <% end %>
-        <div class="container text-center justify-content-center">
-        <h3>Don't see your issue above?</h3>
-        <%=link_to "Create a new alert", new_intake_category_path, class: "btn btn-primary rounded-right fs-3 text-white"  %>
-        </div>
-
       </div>
 
     </div>
