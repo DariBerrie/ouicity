@@ -64,3 +64,13 @@
 
   background-size: cover;
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right {
+  display: flex;
+  margin-left: auto;
+}

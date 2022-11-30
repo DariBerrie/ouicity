@@ -6,7 +6,9 @@ module Intake
 
     def create
       @detail = Detail.new(detail_params)
-      if @detail.valid?
+      if params[:back_button]
+        redirect_to new_intake_category_path()
+      elsif @detail.valid?
         full_params = detail_params.merge(
           category: session['category']['category'],
           creator_id: current_user.id,
@@ -18,7 +20,7 @@ module Intake
 
         session.delete('detail')
 
-        redirect_to alerts_path(@alert)
+        redirect_to alert_path(@alert)
       else
         render :new
       end
