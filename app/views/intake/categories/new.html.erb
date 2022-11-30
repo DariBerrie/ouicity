@@ -5,7 +5,11 @@
           <div class="form-input">
           <%= f.input :category,
           as: :radio_buttons,
-          collection: ["Vandalism", "Littering", "Broken Object", "Transportation", "New Idea", "Other"] %>
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector'},
+            collection: ["Vandalism", "Littering", "Infrastructure", "Transportation", "New Idea", "Other"] %>
 
           <%#= f.input :category,
               as: :radio_buttons,
@@ -13,10 +17,10 @@
               collection_wrapper_class: 'category-wrapper',
               item_wrapper_class: 'category-item',
               input_html: {class: 'category-selector'},
-              collection: ["Vandalism", "Littering", "Broken Object", "Transportation", "New Idea", "Other"]%>
+              collection: ["Vandalism", "Littering", "Infrastructure", "Transportation", "New Idea", "Other"]%>
           </div>
           <%= f.submit 'Next Step', class: "btn btn-primary" %>
         <% end %>
       </div>
     </div>
-</div>
+  </div>
