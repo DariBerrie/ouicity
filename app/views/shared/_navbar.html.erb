@@ -1,7 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "d-flex flex-row navbar-brand" do %>
-      <%= image_tag "ouicity_logo.png" %>
+      <%= cl_image_tag("ajtxarvmp5fusz7kj2er") %>
       <h2 id="logo" class="ms-3">ouicity</h2>
     <% end %>
 
@@ -12,20 +12,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+          <li class="pt-2 px-2" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Send an alert">
+            <%= link_to new_intake_category_path do %>
+              <%= cl_image_tag("jfxjmvn9fxu1j1xnqxra", width:50, height:50) %>
+            <% end %>
           </li>
-          <%# <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link"
-          </li> %>
-          <li class="nav-item dropdown">
-            <%= image_tag "monkey.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Send an alert", new_intake_category_path, class: "dropdown-item" %>
-              <%= link_to "Your alerts", my_alerts_alerts_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="px-2">
+            <%= link_to my_alerts_alerts_path do %>
+              <%= cl_image_tag("your_alerts_icon_2_ojjqca", width:65, height:65) %>
+            <% end %>
           </li>
+          <li class="pt-3 px-2">
+            <%= link_to edit_user_registration_path do %>
+              <%= cl_image_tag("pu4gww196dbv28fd1io1", width:40, height:40) %>
+            <% end %>
+          </li>
+          <li class="px-2 mt-3">
+            <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+              <%= cl_image_tag("pqzzjloc9zxmizway0ne", width:35, height: 35) %>
+            <% end %>
+          </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
