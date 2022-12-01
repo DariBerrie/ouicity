@@ -107,7 +107,7 @@ export default class extends Controller {
         <div class="listing card shadow-sm d-flex flex-row">
           <img class="me-3"
                src="${alert.photos[0].url}"
-               style="width:80px; height:80px; border-radius:50%;">
+               style="width:80px; height:80px; border-radius:50%; object-fit:fill;">
           <div class="listing-details">
             <a href="${alertUrl.value}/${alert.id}">${alert.address}</a><br>
             <strong>${alert.title}</strong>
@@ -122,7 +122,7 @@ export default class extends Controller {
     alertsHeading.innerHTML= `
       <h5 id="alerts-heading">Alerts in this area
       <a data-action="click->alerts#showAlertList"
-      class="fs-4 toggle">
+      class="fs-3 toggle">
       <i class="fa-solid fa-circle-chevron-down"></i></a></h5>`
   }
 
