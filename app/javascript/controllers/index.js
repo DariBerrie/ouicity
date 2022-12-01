@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import 404Controller from "./404_controller"
-application.register("404", 404Controller)
-
 import AddressAutocompleteController from "./address_autocomplete_controller"
 application.register("address-autocomplete", AddressAutocompleteController)
 
