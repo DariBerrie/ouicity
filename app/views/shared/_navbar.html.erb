@@ -12,20 +12,22 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Home", "#", class: "nav-link" %>
+          <li class="px-2" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Send an alert">
+            <%= link_to new_intake_category_path do %>
+              <%= image_tag "send_alert_icon.png", width:50, height:50 %>
+            <% end %>
           </li>
-          <%# <li class="nav-item">
-            <%= link_to "Messages", "#", class: "nav-link"
-          </li> %>
-          <li class="nav-item dropdown">
-            <%= image_tag "monkey.png", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Send an alert", new_intake_category_path, class: "dropdown-item" %>
-              <%= link_to "Your alerts", my_alerts_alerts_path, class: "dropdown-item" %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
+          <li class="px-2">
+            <%= link_to my_alerts_alerts_path do %>
+              <%= image_tag "your_alerts_icon_1.png", width:50, height:50 %>
+            <% end %>
           </li>
+          <li class="px-2 pt-2">
+            <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+              <%= image_tag "sign_out.png", width:30, height: 30 %>
+            <% end %>
+          </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
