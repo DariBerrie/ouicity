@@ -31,7 +31,7 @@ export default class extends Controller {
     let mark = this.markerValue;
     this.alert_show_map.jumpTo({
       center: [mark.lng, mark.lat],
-      zoom: 12,
+      zoom: 16,
     });
   }
 }

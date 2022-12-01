@@ -102,20 +102,19 @@ export default class extends Controller {
       const roundedDistance = Math.round(alert.distance * 100) / 100;
       const alertsHeading = document.getElementById('alerts-heading')
       this.buildAlertsHeading()
+      const alertUrl = document.getElementById('alert-path')
       listing.innerHTML = `
         <div class="listing card shadow-sm d-flex flex-row">
           <img class="me-3"
                src="${alert.photos[0].url}"
                style="width:80px; height:80px; border-radius:50%;">
           <div class="listing-details">
-            <a href="#">${alert.address}</a><br>
+            <a href="${alertUrl.value}/${alert.id}">${alert.address}</a><br>
             <strong>${alert.title}</strong>
             <p class="fs-6">${alert.description}<br>
             <strong>${roundedDistance} kms away</strong></p>
           </div>
         </div>`
-
-
     })
   }
   buildAlertsHeading(){
