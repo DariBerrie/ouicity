@@ -23,7 +23,9 @@ puts "Creating 5 users with resident role..."
     address: Faker::Address.full_address,
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    role: 0
+    role: 0,
+    # Nickname to be used in the chatroom, ideally first name
+    nickname: Faker::Name.first_name
   )
   # puts "Resident #{User.id} created"
 end
@@ -43,7 +45,7 @@ puts "Creating 2 users with worker role..."
   # puts "Worker #{User.id} created"
 end
 
-# Create 10 alerts
+# Create 5 alerts
 puts "Creating 5 alerts..."
 
 alert = Alert.new(
@@ -115,3 +117,12 @@ alert.photos.attach(io: File.open(File.join(Rails.root, 'app/assets/images/graff
                     filename: "alert#{alert.id}.png")
 
 alert.save!
+
+# Create 5 chatrooms with alerts title as name
+# puts "Creating 5 chatrooms..."
+
+# 5.times do
+#   Chatroom.create!(
+#     name: Alert.all.sample.title
+#   )
+# end

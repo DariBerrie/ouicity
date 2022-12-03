@@ -13,6 +13,9 @@ application.register("alert-show-map", AlertShowMapController)
 import AlertsController from "./alerts_controller"
 application.register("alerts", AlertsController)
 
+import ChatroomSubscriptionController from "./chatroom_subscription_controller"
+application.register("chatroom-subscription", ChatroomSubscriptionController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
