@@ -21,12 +21,15 @@
         </div>
 
           <%= f.input :photos, multiple: true, label: false %>
-          <%= f.button :submit, "Update", class: "btn btn-primary" %>
+          <%= f.button :submit, "Update", class: "btn btn-primary text-white fw-bold mb-4" %>
 
-        <h6 class="mt-4">Is this alert is no longer valid?
-          <%= link_to "Delete alert", alert_path(@alert),
-              data: { turbo_method: :delete,
-                      turbo_confirm: "Are you sure?" }%></h6>
+          <% if @alert.assigned? == false %>
+            <h6 class="mt-2">Is this alert is no longer valid?
+              <%= link_to "Delete alert", alert_path(@alert),
+                  data: { turbo_method: :delete,
+                          turbo_confirm: "Are you sure?" }%></h6>
+          <% end %>
+
       <% end %>
 
       <%= link_to alert_path(@alert), class: "text-decoration-none" do %>

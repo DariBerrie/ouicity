@@ -1,6 +1,7 @@
 class Alert < ApplicationRecord
   # belongs_to :user
   belongs_to :creator, class_name: 'User'
+  has_one :assignment
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -21,4 +22,8 @@ class Alert < ApplicationRecord
     resolved: 2
   }
   has_many_attached :photos
+
+  def assigned?
+    return self.assignment
+  end
 end
