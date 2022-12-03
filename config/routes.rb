@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 
   resources :pages, only: :index
   resources :contacts, only: [:new, :create]
+  # Chatroom routes
+  resources :chatrooms, only: :show do
+    resources :chat_messages, only: :create
+  end
 
   resources :alerts, only: %i[index new show create edit upvote update destroy] do
     collection do
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
       put "like", to: "alerts#like"
     end
   end
+
 
   namespace :intake do
       resources :categories, only: %i[new create]

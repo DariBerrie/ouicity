@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :alerts
   has_many :assignments
   has_many :messages
+  has_many :chat_messages
 
   enum role: { resident: 0, worker: 1 }
 
