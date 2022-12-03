@@ -1,6 +1,8 @@
-
-<div class="listings card">
-  <h6><%= alert.title %></h6>
-  <p><%= alert.description %></p>
-  <%= image_tag "graffiti.png", width:80, height:50 %>
+<div class="listing card shadow-sm d-flex flex-row">
+  <%= cl_image_tag(alert.photos[0].key, class: "me-3", width: 80, height: 80, radius: :max, input_html: { style: "object-fit:fill;"}) %>
+  <div class="listing-details">
+    <%= link_to "#{alert.address}", alerts_path(alert) %><br>
+    <strong><%=alert.title %></strong>
+    <p class="fs-6"><%=alert.description%></p>
+  </div>
 </div>
