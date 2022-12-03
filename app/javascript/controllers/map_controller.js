@@ -31,6 +31,7 @@ export default class extends Controller {
     }
 
     geocoder.on('result', (event) => {
+      sessionStorage.setItem("addressEvent", event.result.place_name)
       const searchResult = event.result.geometry
       const options = { units: 'kilometers' }
       const alerts = this.alertsValue
@@ -125,6 +126,5 @@ export default class extends Controller {
       class="fs-3 toggle">
       <i class="fa-solid fa-circle-chevron-down"></i></a></h5>`
   }
-
 
 }

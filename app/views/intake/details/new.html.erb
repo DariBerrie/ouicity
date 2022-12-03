@@ -3,13 +3,13 @@
   <div id="inputFields">
         <%= simple_form_for(@detail) do |f| %>
           <div class="form-input">
+            <%= f.input :address,
+                input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                wrapper_html: {data: {controller: "address-autocomplete",
+                address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                %>
             <%= f.input :title %>
             <%= f.input :description %>
-            <%= f.input :address,
-              input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-              wrapper_html: {data: {controller: "address-autocomplete",
-              address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-              %>
             <%= f.input :photos, as: :file, input_html: { multiple: true } %>
           </div>
           <div class='buttons'><%= f.submit '<', :name => "back_button", class: "btn btn-primary" %>
