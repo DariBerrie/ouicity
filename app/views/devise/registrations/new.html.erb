@@ -21,6 +21,12 @@
       <%= f.input :address,
                   required: true,
                   autofocus: true,
+                  input_html: {autocomplete: "address", data: {address_autocomplete_target: "address"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete",
+                  address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}} %>
+      <%# <%= f.input :address,
+                  required: true,
+                  autofocus: true,
                   input_html: { autocomplete: "address" }%>
       <%= f.input :password,
                   required: true,
