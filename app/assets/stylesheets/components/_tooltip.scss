@@ -1,0 +1,11 @@
+.tooltip-inner {
+  background-color: white;
+  color: $red;
+  opacity: 1 !important;
+}
+
+.tooltip-arrow::before {
+  background-color: #FBE4E2 !important;
+  opacity: 1 !important;
+  border-bottom-color: white !important;
+}

@@ -48,8 +48,12 @@
   padding: 20px 0px 20px 0px;
   margin: 10px 0px 10px 0px;
   border: 2px solid #EAEAEA;
-  border-radius: 4px;
+  border-radius: 16px;
   background-color: #FC7D76;
+
+  &:hover {
+    background-color: #fda39e;
+  }
 }
 
 .category-selector:checked + label {
