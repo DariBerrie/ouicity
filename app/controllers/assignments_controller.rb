@@ -16,10 +16,10 @@ class AssignmentsController < ApplicationController
 
   def create
     @assignment = Assignment.new
-    @user = current_user
     @alert = Alert.find(params[:alert_id])
+    @worker = User.find(params.require(:assignment)[:worker_id])
     @assignment.alert = @alert
-    @assignment.user = @user
+    @assignment.worker = @worker
     if @assignment.save
       redirect_to alert_path(@alert), notice: "Alert has been successfully assigned."
     else
@@ -31,4 +31,10 @@ class AssignmentsController < ApplicationController
     @user = current_user
     @assignments = Assignment.where(worker: @user)
   end
+
+  private
+
+  # def assignment_params
+  #   params.require(:alert).permit(:worker_id, :alert_id)
+  # end
 end
