@@ -1,6 +1,7 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
-    <%= link_to root_path, class: "d-flex flex-row navbar-brand" do %>
+    <%= link_to root_path, class: "d-flex flex-row navbar-brand",
+        input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
       <%= cl_image_tag("ouicity_logo_j5rhro") %>
       <h2 id="logo" class="ms-3">ouicity</h2>
     <% end %>
@@ -11,7 +12,7 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
+        <% if user_signed_in? && current_user.role == "resident" %>
           <li class="pt-2 px-2">
             <%= link_to new_intake_category_path do %>
               <%= cl_image_tag("jfxjmvn9fxu1j1xnqxra", width:50, height:50) %>
@@ -32,7 +33,10 @@
               <%= cl_image_tag("pqzzjloc9zxmizway0ne", width:35, height: 35) %>
             <% end %>
           </li>
-
+        <% elsif user_signed_in? && current_user.role == "worker" %>
+          <a class="me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+            <%= cl_image_tag("menu_icon_1_hrixtz",width:40, height:40) %>
+          </a>
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>

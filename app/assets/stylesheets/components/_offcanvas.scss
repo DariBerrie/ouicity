@@ -1,0 +1,26 @@
+.offcanvas {
+  background-color: white;
+  width: 250px !important;
+  height: 600px !important;
+  border: none;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  top:100px !important;
+
+  #sublogo {
+    position: absolute;
+    top: 44px;
+    left: 74px;
+  }
+
+  li {
+    font-size: 18px;
+    text-decoration: none;
+    padding: 16px 0;
+    list-style:none;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}
