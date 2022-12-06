@@ -1,5 +1,9 @@
 module Intake
   class CategoriesController < ApplicationController
+    extend ActiveSupport::Concern
+    included do
+      before_action :authenticate_user!, only: %i[new]
+    end
     def new
       @category = Category.new
     end
