@@ -14,7 +14,12 @@
     <input type="hidden" id="alert-path" name="alert-path" value="<%= alerts_path %>">
     <div data-controller="alerts"  class="col-12 col-lg-6">
       <div class="search-box shadow-sm d-flex flex-column w-100">
-        <h3>Hi <%= current_user.first_name %>!</h3>
+        <h3>Hi <% if current_user %>
+                  <%= current_user.first_name %>
+                  <% else %>
+                  <%= "there" %>
+                  <% end %>
+        !</h3>
         <h4>Can you tell us where the issue is?</h4>
         <p>Don't see your issue above? <%= link_to "Send an alert.", new_intake_category_path %></p>
         <div id="geocoder" class="geocoder"
