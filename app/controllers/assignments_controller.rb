@@ -31,10 +31,4 @@ class AssignmentsController < ApplicationController
     @user = current_user
     @assignments = Assignment.where(worker: @user)
   end
-
-  private
-
-  # def assignment_params
-  #   params.require(:alert).permit(:worker_id, :alert_id)
-  # end
 end
