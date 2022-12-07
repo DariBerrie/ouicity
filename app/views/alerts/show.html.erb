@@ -1,4 +1,4 @@
 <%= if current_user.role == 'resident'
-    render 'resident'
-  else render 'city'
+    render 'show_resident'
+  else render 'show_worker'
 end %>

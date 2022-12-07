@@ -1,0 +1,54 @@
+<div class="container">
+  <%= render "shared/offcanvas" %>
+  <div class="row align-items-top">
+    <div class="col-12 col-lg-4">
+      <div class="map-container mt-3">
+        <div class='map-size'
+          data-controller="map"
+          data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-map-target="map">
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="alert-path" name="alert-path" value="<%= alerts_path %>">
+    <div data-controller="alerts"  class="col-12 col-lg-8">
+      <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
+        <h3>Hi <% current_user.first_name %>!</h3>
+        <div id="geocoder" class="geocoder"
+             data-action="submit->map#buildAlertList submit->map#captureSearchResult"></div>
+      </div>
+
+      <table class="table table-white table-hover my-3 flex-grow">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Category</th>
+            <th scope="col">Alert</th>
+            <th scope="col">Address</th>
+            <th scope="col">Status</th>
+            <th scope="col">Assigned</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @alerts.each do |alert| %>
+          <tr>
+            <th scope="row"><%= alert.id %></th>
+            <td><%= alert.category %></td>
+            <td><%= alert.title %></td>
+            <td><%= alert.address %></td>
+            <td><span style="color:#d4cecd;"><%= alert.status %></span></td>
+            <td><% if alert.assignment%>
+                 <strong><%= alert.assignment.worker.first_name %></strong>
+                <% else %>
+                  <em style="color:#d4cecd;">unassigned</em>
+                <% end %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
