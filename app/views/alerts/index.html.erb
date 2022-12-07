@@ -1,4 +1,5 @@
 <div class="container">
+  <%= render "shared/offcanvas" %>
   <div class="row align-items-center">
     <div class="col-12 col-lg-6">
       <div class="map-container">
@@ -13,7 +14,7 @@
     </div>
     <input type="hidden" id="alert-path" name="alert-path" value="<%= alerts_path %>">
     <div data-controller="alerts"  class="col-12 col-lg-6">
-      <div class="search-box shadow-sm d-flex flex-column w-100">
+      <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
         <h3>Hi <% if current_user %>
                   <%= current_user.first_name %>
                   <% else %>

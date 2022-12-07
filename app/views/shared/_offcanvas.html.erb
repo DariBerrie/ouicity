@@ -1,0 +1,19 @@
+ <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"
+         style="height:400px; width:150px;">
+      <div class="offcanvas-header">
+        <h5 class="logo-font fs-2" id="offcanvasExampleLabel">ouicity</h5>
+        <p id="sublogo">city&#20;view</p>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+            <li><a class="tab" href="#"><i class="fa-solid fa-gauge fs-4 pe-1"></i> Dashboard</a></li>
+            <li><a class="tab" href="#"><i class="fa-solid fa-envelope fs-4 pe-1"></i> Messages</a></li>
+            <li><a class="tab" href="#"><i class="fa-solid fa-location-dot fs-4 pe-1"></i> Assignments</a></li>
+            <li><a class="tab" href="#"><i class="fa-solid fa-circle-plus fs-4 pe-1"></i> Subscriptions</a></li>
+            <li><a class="tab" href="#"><i class="fa-solid fa-chart-pie fs-4 pe-1"></i> Analytics</a></li>
+            <li><a class="tab pb-3" href="#"><i class="fa-solid fa-gear fs-4 pe-1"></i> Settings</a></li>
+            <li><%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+              <i class="fa-solid fa-power-off fs-4 pe-1"></i> Log Out
+            <% end %></li>
+      </div>
+    </div>
