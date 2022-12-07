@@ -55,8 +55,9 @@
              <div class="container m-2">
               <%= simple_form_for( [@alert, @assignment ]) do |f| %>
                 <div class="form-input">
-                  <%= f.association :worker %>
-                  <%#= f.association :worker, collection: User.active.order(:first_name), prompt: "Choose a Company"%>
+                  <%#= f.association :worker %>
+                  <%#= f.association :worker, collection: User.active.order(:first_name)%>
+                  <%= f.association  :worker, label_method: :first_name, value_method: :id, include_blank: false %>
                 </div>
                 <%= f.submit 'Assign', class: "btn btn-primary" %>
               <% end %>
