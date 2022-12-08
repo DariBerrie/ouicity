@@ -22,6 +22,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :assignments, only: %i[index create new edit update]
 
   namespace :intake do
       resources :categories, only: %i[new create]
