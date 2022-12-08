@@ -8,8 +8,8 @@
       <div class="offcanvas-body">
             <li><a class="tab" href="#"><i class="fa-solid fa-gauge fs-4 pe-1"></i> Dashboard</a></li>
             <li><a class="tab" href="#"><i class="fa-solid fa-envelope fs-4 pe-1"></i> Messages</a></li>
-            <li><a class="tab" href="#"><i class="fa-solid fa-location-dot fs-4 pe-1"></i> Assignments</a></li>
-            <li><a class="tab" href="#"><i class="fa-solid fa-circle-plus fs-4 pe-1"></i> Subscriptions</a></li>
+            <li><a class="tab" href="/assignments"><i class="fa-solid fa-location-dot fs-4 pe-1"></i> Assignments</a></li>
+            <li><a class="tab" href="/assignments"><i class="fa-solid fa-circle-plus fs-4 pe-1"></i> Subscriptions</a></li>
             <li><a class="tab" href="#"><i class="fa-solid fa-chart-pie fs-4 pe-1"></i> Analytics</a></li>
             <li><a class="tab pb-3" href="#"><i class="fa-solid fa-gear fs-4 pe-1"></i> Settings</a></li>
             <li><%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
