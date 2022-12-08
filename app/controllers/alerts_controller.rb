@@ -1,6 +1,6 @@
 class AlertsController < ApplicationController
   before_action :set_alert, only: %i[show like edit update destroy]
-  before_action :authenticate_user!, only: %i[like show new edit]
+  before_action :authenticate_user!, only: %i[index like show new edit]
 
   def index
     @alerts = Alert.all
