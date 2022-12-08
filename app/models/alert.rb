@@ -14,6 +14,13 @@ class Alert < ApplicationRecord
 
   acts_as_votable
 
+  include PgSearch::Model
+  pg_search_scope :search_by_everything,
+                  against: %i[title description category address],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
+
   # These statuses are placeholders until we have a better idea
   # of what they should be.
   enum status: {

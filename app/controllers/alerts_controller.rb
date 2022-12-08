@@ -3,7 +3,12 @@ class AlertsController < ApplicationController
   before_action :authenticate_user!, only: %i[index like show new edit]
 
   def index
-    @alerts = Alert.all
+    if params[:query].present?
+      @alerts = Alert.search_by_everything(params[:query])
+    else
+      @alerts = Alert.all
+    end
+
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,
