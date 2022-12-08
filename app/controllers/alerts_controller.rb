@@ -15,6 +15,7 @@ class AlertsController < ApplicationController
 
   def show
     @marker = { lat: @alert.geocode[0], lng: @alert.geocode[1] }
+    @assignment = Assignment.new
   end
 
   def my_alerts

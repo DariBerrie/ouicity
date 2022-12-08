@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     collection do
       get :my_alerts
     end
-    resources :assignments, only: %i[index new edit update]
+    resources :assignments, only: %i[index create new edit update]
     member do
       put "like", to: "alerts#like"
     end
