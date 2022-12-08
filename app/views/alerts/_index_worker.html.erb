@@ -12,15 +12,13 @@
         </div>
       </div>
     </div>
-    <input type="hidden" id="alert-path" name="alert-path" value="<%= alerts_path %>">
     <div data-controller="alerts"  class="col-12 col-lg-8">
       <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
-        <h3>Hi <% current_user.first_name %>!</h3>
-        <div id="geocoder" class="geocoder"
-             data-action="submit->map#buildAlertList submit->map#captureSearchResult"></div>
+        <h3>Bonjour <%= current_user.first_name %>! What is today's focus?</h3>
+        <div id="geocoder" class="geocoder"></div>
       </div>
 
-      <table class="table table-white table-hover my-3 flex-grow">
+      <table class="table table-white table-hover my-3 rounded-4 shadow-sm">
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -36,7 +34,7 @@
           <tr>
             <th scope="row"><%= alert.id %></th>
             <td><%= alert.category %></td>
-            <td><%= alert.title %></td>
+            <td><%= link_to alert.title, alert %></td>
             <td><%= alert.address %></td>
             <td><span style="color:#d4cecd;"><%= alert.status %></span></td>
             <td><% if alert.assignment%>

@@ -45,7 +45,7 @@
             <% else %>
               Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %><br>
             <% end %>
-            <span class="text-muted"><i class="fa-solid fa-bars-progress"></i> Alert <%= @alert.status %></span></p>
+            <%= render "shared/status_bar" %></p>
 
             <%# Upvotes %>
             <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
