@@ -14,6 +14,7 @@ class AlertsController < ApplicationController
   end
 
   def show
+    @workers = User.where(role: "worker")
     @marker = { lat: @alert.geocode[0], lng: @alert.geocode[1] }
     @assignment = Assignment.new
   end
