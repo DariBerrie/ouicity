@@ -8,7 +8,8 @@
           data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-target="map">
+          data-map-target="map"
+          data-action="connect->map#showClusters">
         </div>
       </div>
     </div>
@@ -18,10 +19,10 @@
         <%= form_with url: alerts_path, method: :get, class: "d-flex" do %>
           <%= text_field_tag :query,
             params[:query],
-            class: "form-control rounded-left background-white fs-4",
+            class: "form-control rounded-left background-white fs-6",
             placeholder: "What is today's focus?"
           %>
-          <%= submit_tag "Search!", class: "btn btn-primary rounded-right fs-4 text-white" %>
+          <%= submit_tag "Search", class: "btn btn-primary rounded-right fs-6 text-white" %>
         <% end %>
       </div>
 

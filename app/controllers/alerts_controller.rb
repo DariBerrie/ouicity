@@ -4,9 +4,9 @@ class AlertsController < ApplicationController
 
   def index
     if params[:query].present?
-      @alerts = Alert.search_by_everything(params[:query])
+      @alerts = Alert.order(created_at: :desc).search_by_everything(params[:query])
     else
-      @alerts = Alert.all
+      @alerts = Alert.order(created_at: :desc)
     end
 
     @markers = @alerts.geocoded.map do |alert|
@@ -22,6 +22,8 @@ class AlertsController < ApplicationController
     @workers = User.where(role: "worker")
     @marker = { lat: @alert.geocode[0], lng: @alert.geocode[1] }
     @assignment = Assignment.new
+    @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}")
+    @chat_message = ChatMessage.new
   end
 
   def my_alerts
