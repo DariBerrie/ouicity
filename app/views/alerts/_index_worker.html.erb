@@ -8,8 +8,7 @@
           data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-target="map"
-          data-action="connect->map#showClusters">
+          data-map-target="map">
         </div>
       </div>
     </div>
@@ -36,7 +35,6 @@
             <th scope="col">Status</th>
             <th scope="col">Assigned</th>
             <th scope="col">Created at</th>
-
           </tr>
         </thead>
         <tbody>
