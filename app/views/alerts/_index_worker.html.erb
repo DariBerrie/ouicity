@@ -1,21 +1,29 @@
 <div class="container">
   <%= render "shared/offcanvas" %>
   <div class="row align-items-top">
-    <div class="col-12 col-lg-4">
+    <div class="col-12 col-lg-12">
       <div class="map-container mt-3">
-        <div class='map-size'
+        <div class='map-size-worker'
           data-controller="map"
           data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
           data-map-markers-value="<%= @markers.to_json %>"
           data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-target="map">
+          data-map-target="map"
+          data-action="connect->map#showClusters">
         </div>
       </div>
     </div>
-    <div data-controller="alerts"  class="col-12 col-lg-8">
-      <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
-        <h3>Bonjour <%= current_user.first_name %>! What is today's focus?</h3>
-        <div id="geocoder" class="geocoder"></div>
+    <div data-controller="search-worker-alerts"  class="col-12 col-lg-12">
+      <div class="search-box mt-3 shadow-sm d-flex flex-column w-50">
+        <h3>Bonjour <%= current_user.first_name %>!</h3>
+        <%= form_with url: alerts_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control rounded-left background-white fs-6",
+            placeholder: "What is today's focus?"
+          %>
+          <%= submit_tag "Search", class: "btn btn-primary rounded-right fs-6 text-white" %>
+        <% end %>
       </div>
 
       <table class="table table-white table-hover my-3 rounded-4 shadow-sm">
@@ -27,6 +35,8 @@
             <th scope="col">Address</th>
             <th scope="col">Status</th>
             <th scope="col">Assigned</th>
+            <th scope="col">Created at</th>
+
           </tr>
         </thead>
         <tbody>
@@ -43,6 +53,7 @@
                   <em style="color:#d4cecd;">unassigned</em>
                 <% end %>
             </td>
+            <td><%= alert.created_at.strftime('%b %d %Y') %></td>
           </tr>
           <% end %>
         </tbody>

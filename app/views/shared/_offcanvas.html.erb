@@ -6,14 +6,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-            <li><a class="tab" href="#"><i class="fa-solid fa-gauge fs-4 pe-1"></i> Dashboard</a></li>
-            <li><a class="tab" href="#"><i class="fa-solid fa-envelope fs-4 pe-1"></i> Messages</a></li>
-            <li><a class="tab" href="/assignments"><i class="fa-solid fa-location-dot fs-4 pe-1"></i> Assignments</a></li>
-            <li><a class="tab" href="/assignments"><i class="fa-solid fa-circle-plus fs-4 pe-1"></i> Subscriptions</a></li>
-            <li><a class="tab" href="#"><i class="fa-solid fa-chart-pie fs-4 pe-1"></i> Analytics</a></li>
-            <li><a class="tab pb-3" href="#"><i class="fa-solid fa-gear fs-4 pe-1"></i> Settings</a></li>
-            <li><%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
-              <i class="fa-solid fa-power-off fs-4 pe-1"></i> Log Out
-            <% end %></li>
+        <li><%= link_to alerts_path, class: "tab" do %>
+          <i class="fa-solid fa-gauge fs-4 pe-1"></i> Dashboard <% end %></li>
+        <li><%= link_to alerts_path, class: "tab" do %>
+              <i class="fa-solid fa-envelope fs-4 pe-1"></i> Messages <% end %></li>
+        <li><%= link_to alerts_path, class: "tab" do %>
+              <i class="fa-solid fa-location-dot fs-4 pe-1"></i> Assignments <% end %></li>
+        <li><%= link_to alerts_path, class: "tab" do %>
+              <i class="fa-solid fa-chart-pie fs-4 pe-1"></i> Analytics <% end %></li>
+        <li><%= link_to edit_user_registration_path, class: "tab" do %>
+              <i class="fa-solid fa-envelope fs-4 pe-1"></i> Settings <% end %></li>
+        <li><%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+              <i class="fa-solid fa-power-off fs-4 pe-1"></i> Log Out <% end %></li>
       </div>
     </div>
