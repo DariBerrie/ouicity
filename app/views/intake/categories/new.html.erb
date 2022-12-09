@@ -16,14 +16,6 @@
                 ['<i class="fa-solid fa-road fs-1 text-white"></i>'.html_safe,"Transportation"],
                 ['<i class="fa-solid fa-lightbulb fs-1 text-white"></i>'.html_safe,"New Idea"],
                 ['<i class="fa-solid fa-otter fs-1 text-white"></i>'.html_safe,"Other"]] %>
-
-          <%# <%= f.input :category,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'category-wrapper',
-              item_wrapper_class: 'category-item',
-              input_html: {class: 'category-selector'},
-              collection: ["Vandalism", "Littering", "Infrastructure", "Transportation", "New Idea", "Other"] %>
           </div>
             <%= f.submit '>', class: "btn btn-primary right fw-bold text-white" %>
         <% end %>
