@@ -9,15 +9,15 @@
       <h1><span class="logo-font" data-controller="typed-js"></span></h1>
       <h1 class="pb-2">Together we'll get things done!</h1>
       <h2 class="pb-2">Improve our city with your action.</h2>
-      <%= link_to "Send an alert", alerts_path, class: "fs-4 p-3 fw-bold btn btn-primary text-white rounded-pill" %>
+      <p><%= link_to "Send an alert", alerts_path, class: "fs-4 p-3 fw-bold btn btn-primary text-white rounded-pill" %></p>
     </div>
     <div class="col-12 col-lg-4 phone-container">
       <%= cl_image_tag("smartphone_mockup_vsajye", height: 650 )%>
-      <div class="phone-map-container">
-        <div style="width: 280px; height: 590px; border-radius: 39px;"
-        data-controller="map"
-        data-map-markers-value="<%= @markers.to_json %>"
-        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+      <div class="phone-map-container"
+            style="width: 280px; height: 590px; border-radius: 39px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@
           <%= cl_image_tag("blow_kisses_aoxuv1", class: "carousel-img") %>
           <div class="text-container">
             <h3 class="fw-bold text-white">What is <span class="logo-font fs-2">Ouicity</span>?</h3>
-            <p class="fs-5 text-white">We want to bring the joy back to city living! Even though we're all living amongst each other, we
+            <p class="text-white">We want to bring the joy back to city living! Even though we're all living amongst each other, we
             can still feel at home. Part of being home is working together to keep it beautiful. Our app gets you directly
             involved in your city’s well-being.</p>
           </div>
@@ -44,7 +44,7 @@
           <%= cl_image_tag("man_on_bike_pyo4mi", class: "carousel-img") %>
           <div class="text-container">
             <h3 class="fw-bold text-white">Why use it?</h3>
-            <p class="fs-5 text-white">To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
+            <p class="text-white">To make your voice heard! Sick of seeing cars parked in the bike lane you use to commute? Let us know!
             We simplify the process and put you in direct contact with your city officials. </p>
           </div>
           <%= cl_image_tag("right_arrow_ty3vzx", class: "right-nav-icon") %>
@@ -56,7 +56,7 @@
           <%= cl_image_tag("paris_worker_euaskj", class: "carousel-img") %>
           <div class="text-container">
             <h3 class="fw-bold text-white">How does it work?</h3>
-            <p class="fs-5 text-white">You can identify a specific location where you will then be asked to create an
+            <p class="text-white">You can identify a specific location where you will then be asked to create an
             alert. Once created, your city team will take care of the rest! Sit back and relax! And,
             of course, the city team will let you know once they've solved your alert.</p>
           </div>
@@ -71,12 +71,12 @@
   <%= form_for @contact, class: "d-flex flex-column align-items-center justify-content-center" do |f| %>
       <%= f.text_field  :name, required: true,
                         class: "form-control bg-white border-0 shadow-sm",
-                        placeholder: "Name" %></br>
+                        placeholder: "Name" %><br>
       <%= f.text_field :email, required: true,
                         class: "form-control bg-white border-0 shadow-sm",
-                        placeholder: "Email" %></br>
+                        placeholder: "Email" %><br>
       <%= f.text_area :message, rows: 8, cols: 40, required: true, class: "form-control bg-white border-0 shadow-sm",
-            placeholder: "Tell us what's up!"%></br>
+            placeholder: "Tell us what's up!"%><br>
 
         <div class= "d-none">
           <%= f.label :nickname %>

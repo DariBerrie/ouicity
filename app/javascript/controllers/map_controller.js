@@ -20,7 +20,6 @@ export default class extends Controller {
 
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
-    this.showClusters()
 
     const geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
                                           countries: 'fr',
@@ -126,47 +125,6 @@ export default class extends Controller {
       <a data-action="click->alerts#showAlertList"
       class="fs-3 toggle">
       <i class="fa-solid fa-circle-chevron-down"></i></a></h5>`
-  }
-
-  showClusters(){
-    console.log(this.alertsValue)
-    this.map.on('load', () => {
-      this.map.addSource('alerts', {
-        type: 'FeatureCollection',
-        data: this.alertsValue,
-        cluster: true,
-        clusterMaxZoom: 14,
-        clusterRadius: 50
-      })
-      this.map.addLayer(
-        {
-          id: 'alerts-cluster',
-          type: "circle",
-          source: "alerts",
-          filter: ["has", "point_count"],
-          paint: {
-            'circle-color': [
-              'step',
-              ['get', 'point_count'],
-              '#51bbd6',
-              100,
-              '#f1f075',
-              750,
-              '#f28cb1'
-            ],
-            'circle-radius': [
-              'step',
-              ['get', 'point_count'],
-              20,
-              100,
-              30,
-              750,
-              40
-            ]
-          }
-        }
-      )
-    })
   }
 
 }

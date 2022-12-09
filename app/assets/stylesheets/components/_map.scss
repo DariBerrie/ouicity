@@ -12,8 +12,13 @@
 
 .btn-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100px;
+  a {
+    font-size: 12px;
+  }
 }
 
 .geocoder {
