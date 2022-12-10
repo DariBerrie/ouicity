@@ -55,20 +55,11 @@
           <%# Assignments%>
           <% if @alert.assignment %>
             <p style="margin-bottom:0"><b>Assigned to: </b><%= @alert.assignment.worker.first_name %></p>
-          <% else %>
-              <%= simple_form_for [@alert, @assignment] do |f| %>
-                <div class="container mt-2 d-flex flex-row align-items-center">
-                  <%=f.input :worker_id, label: false, collection: @workers, label_method: :first_name, value_method: :id,
-                              input_html: { style: "background-color:white; margin-top:15px; margin-left:-8px; width:250px;" }%>
-                  <%= f.submit 'Assign', class: "btn btn-primary fw-bold text-white" %>
-                </div>
-              <% end %>
-          <% end %>
 
-          <%# Status %>
+            <%# Status %>
           <div class="status">
             <%= render "shared/status_bar" %>
-              <% if current_user == @alert.assignment.worker %>
+              <% if current_user == @alert.assignment.worker.id %>
                 <div class="container" >
                   <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
                     <div class="status-input">
@@ -79,7 +70,17 @@
                 </div>
                <% end %>
            </div>
-          
+          <% else %>
+            <%= render "shared/status_bar" %>
+              <%= simple_form_for [@alert, @assignment] do |f| %>
+                <div class="container mt-2 d-flex flex-row align-items-center">
+                  <%=f.input :worker_id, label: false, collection: @workers, label_method: :first_name, value_method: :id,
+                              input_html: { style: "background-color:white; margin-top:15px; margin-left:-8px; width:250px;" }%>
+                  <%= f.submit 'Assign', class: "btn btn-primary fw-bold text-white" %>
+                </div>
+              <% end %>
+          <% end %>
+
           <%# Subscriptions %>
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
             <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary fw-bold text-white" %>
@@ -89,7 +90,7 @@
             <% end %>
           <% end %>
           <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
-          
+
         </div>
       </div>
     </div>
