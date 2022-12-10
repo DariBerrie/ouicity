@@ -53,6 +53,7 @@ class AlertsController < ApplicationController
       end
     else
       @alert.update(alert_params)
+      redirect_to alert_path(@alert), notice: "Alert updated successfully."
     end
   end
 

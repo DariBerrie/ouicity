@@ -38,16 +38,19 @@
             <% else %>
               Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %><br>
             <% end %>
-
-            <%= render "shared/status_bar" %></p>
-             <div class="container m-2">
-                <%= simple_form_for(@alert) do |f| %>
-                  <div class="form-input">
-                    <%=f.input :status, collection: Alert.statuses.keys %>
+            <div class="status">
+              <%= render "shared/status_bar" %></p>
+              <%# <div data-controller="change-status"> %>
+              <div class="container" >
+                <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
+                  <div class="status-input">
+                    <%=f.input :status, collection: Alert.statuses.keys, label: false, style:"margin: 0 important!" %>
+                    <%=f.submit 'Update status', class: "btn btn-primary" %>
+                    <% end %>
                   </div>
-                  <%= f.submit 'Update', class: "btn btn-primary" %>
-                <% end %>
               </div>
+              <%# </div> %>
+            </div>
 
           <%# Upvotes %>
             <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
@@ -67,7 +70,7 @@
             <% end %>
 
 
-                <%= link_to "Subscribe", edit_alert_path(@alert), class: "btn btn-warning rounded-3 my-2 fw-bold text-white" %>
+                <%= link_to "Subscribe", edit_alert_path(@alert), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
           </div>
         </div>
       </div>
