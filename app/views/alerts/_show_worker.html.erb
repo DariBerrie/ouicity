@@ -40,6 +40,14 @@
             <% end %>
 
             <%= render "shared/status_bar" %></p>
+             <div class="container m-2">
+                <%= simple_form_for(@alert) do |f| %>
+                  <div class="form-input">
+                    <%=f.input :status, collection: Alert.statuses.keys %>
+                  </div>
+                  <%= f.submit 'Update', class: "btn btn-primary" %>
+                <% end %>
+              </div>
 
           <%# Upvotes %>
             <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
