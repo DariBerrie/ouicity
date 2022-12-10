@@ -1,5 +1,4 @@
-<h6><%= alert.title %></h6>
-<p><%= alert.description.first(70) %>[...]</p>
-<div class="btn-container">
-  <%= link_to "Read more", alert, class: "btn btn-primary rounded-pill" %>
+<div class="btn-container rounded-4">
+  <p class="fw-bold text-center"><%= alert.title %></p>
+  <%= link_to "Read more", alert, class: "btn btn-primary btn-sm rounded-pill text-white" %>
 </div>

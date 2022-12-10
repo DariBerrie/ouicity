@@ -32,19 +32,19 @@ export default class extends Controller {
     switch (value) {
       case "Vandalism" :
         return "Was a building recently tagged with graffiti? Has someone purposely destroyed public property? "+
-        "If your alert addresses a similar concern, choose vandalism."
+        "If your alert addresses a similar concern, choose VANDALISM."
       case "Littering" :
-        return "Choose littering when you see trash in areas where it shouldn't be."
+        return "Choose LITTERING when you see trash in areas where it shouldn't be."
       case "Infrastructure" :
         return "The upkeep of our public properties is important. If you notice things that need repair "+
-        " choose infrastructure."
+        " choose INFRASTRUCTURE."
       case "Transportation" :
         return "Is there anything happening on the road (besides traffic) that is making it harder or dangerous for you to get from "+
-        "point A to point B? Choose transportation."
+        "point A to point B? Choose TRANSPORTATION."
       case "New Idea" :
-        return "Do you have a suggestion for improving the neighborhood? Let us know by choosing new idea."
+        return "Do you have a suggestion for improving the neighborhood? Let us know by choosing NEW IDEA."
       case "Other" :
-        return "Your alert doesn't fit the above categories? No worries! Choose other. "+
+        return "Your alert doesn't fit the above categories? No worries! Choose OTHER. "+
         "We will still review your submission."
     }
   }
