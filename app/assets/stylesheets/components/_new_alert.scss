@@ -1,15 +1,15 @@
-.newAlertContainer{
+.new-alert-container{
   max-width: 38em;
   padding: 1em 3em 2em 3em;
-  margin: 4em auto;
+  margin: 5em 1em;
   background-color: #fbe4e2;
   border-radius: 20px;
 }
 
 .form-input {
-  margin: 3em, 4em, 3em;
+  margin: 1em, 3em, 3em;
   padding-bottom: 2em;
-  padding-top: 2em;
+  padding-top: 1em;
 }
 
 .category-wrapper {
@@ -29,16 +29,6 @@
 
 .category-selector + label {
 
- /*height: 100%;
-  font-size: 12px;
-  text-align: left;
-  margin-bottom: 4em;
-  margin-top: 4em;
-  border-radius: 4px;
-  background-color: #FC7D76;
-  position: relative;
-  padding: 10px 10px 30px 10px;*/
-
   display: block;
   cursor: pointer;
   box-sizing: border-box;
@@ -47,7 +37,6 @@
   text-align: center;
   padding: 20px 0px 20px 0px;
   margin: 10px 0px 10px 0px;
-  border: 2px solid #EAEAEA;
   border-radius: 16px;
   background-color: #FC7D76;
 
@@ -72,10 +61,15 @@
 
 .buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .right {
   display: flex;
   margin-left: auto;
+  border-radius: 12px;
+}
+
+#new-alert-btn {
+  border-radius: 12px;
 }

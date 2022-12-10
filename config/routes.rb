@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :alerts, only: %i[index new show create edit upvote update destroy] do
     collection do
       get :my_alerts
+      get :analytics
     end
     resources :assignments, only: %i[index create new edit update]
     resources :subscribers, only: %i[create new]

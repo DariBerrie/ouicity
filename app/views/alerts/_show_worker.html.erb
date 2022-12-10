@@ -2,8 +2,12 @@
   <%= render "shared/offcanvas" %>
   <h3 class="my-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
   <div class="row d-flex">
+    <div class="col-12 col-md-4">
+    <%= render "chatrooms/show" if @alert.chatroom %>
+    </div>
+
     <div class="col-12 col-md-3">
-      <div class="map-container">
+      <div class="map-container mb-2">
         <div style="width: 100%; height: 628px; border-radius:25px;"
           data-controller="alert-show-map"
           data-alert-show-map-marker-value="<%= @marker.to_json %>"
@@ -14,7 +18,7 @@
     </div>
 
     <div class="col-12 col-md-5">
-      <div class="alert-container">
+      <div class="alert-container mb-2">
         <div class="carousel-container">
           <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
             <% if @alert.photos.size > 1 %>
@@ -24,37 +28,31 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
               </div>
             <% end %>
-            <div class="carousel-inner rounded-4">
-              <% @alert.photos.each do |photo| %>
-                <% if photo == @alert.photos[0] %>
-                  <div class="carousel-item active">
-                    <%= cl_image_tag photo.key, class: "d-block", style: "height:auto; width:100%", crop: :fill, gravity: :center %>
-                  </div>
-                <% else %>
-                  <div class="carousel-item">
-                    <%= cl_image_tag photo.key, class: "d-block", style: "height:auto; width:100%", crop: :fill, gravity: :center %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+
+
+          <%# Upvotes %>
+            <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
 
         <div class="details-container">
           <p class="mt-3 fs-5 fw-bold"><%= @alert.address %></p>
           <p><%= @alert.description %></p>
 
-          <p class="fst-italic">Category: <%= @alert.category %>
+          <p>Category: <%= @alert.category %><br>
           <% if @alert.creator == current_user %>
-            You added this on <%= @alert.created_at.strftime('%b %d %Y') %><br>
+            You added this on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
           <% else %>
-            Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %><br>
+            Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
           <% end %>
+          <%= @alert.upvotes %> upvotes <br>
           <%= render "shared/status_bar" %></p>
-
-          <%# Upvotes %>
-          <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
-
+             <div class="container m-2">
+                <%= simple_form_for(@alert) do |f| %>
+                  <div class="form-input">
+                    <%=f.input :status, collection: Alert.statuses.keys %>
+                  </div>
+                  <%= f.submit 'Update', class: "btn btn-primary" %>
+                <% end %>
+              </div>
           <%# Assignments%>
           <% if @alert.assignment %>
             <p class="mt-3"> Assigned to: <%= @alert.assignment.worker.first_name %></p>
@@ -81,10 +79,6 @@
 
         </div>
       </div>
-    </div>
-
-    <div class="col-12 col-md-4">
-      <%= render "chatrooms/show" %>
     </div>
   </div>
 </div>

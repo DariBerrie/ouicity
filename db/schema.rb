@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_03_102627) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_104840) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_102627) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "alert_id"
+    t.index ["alert_id"], name: "index_chatrooms_on_alert_id"
   end
 
   create_table "contacts", force: :cascade do |t|
@@ -95,6 +97,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_102627) do
     t.datetime "updated_at", null: false
     t.index ["assignment_id"], name: "index_messages_on_assignment_id"
     t.index ["worker_id"], name: "index_messages_on_worker_id"
+  end
+
+  create_table "pg_search_documents", force: :cascade do |t|
+    t.text "content"
+    t.string "searchable_type"
+    t.bigint "searchable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
   create_table "subscribers", force: :cascade do |t|
@@ -146,6 +157,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_03_102627) do
   add_foreign_key "assignments", "users", column: "worker_id"
   add_foreign_key "chat_messages", "chatrooms"
   add_foreign_key "chat_messages", "users"
+  add_foreign_key "chatrooms", "alerts"
   add_foreign_key "messages", "assignments"
   add_foreign_key "messages", "users", column: "worker_id"
   add_foreign_key "subscribers", "alerts"
