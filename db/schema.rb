@@ -110,10 +110,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_104840) do
 
   create_table "subscribers", force: :cascade do |t|
     t.bigint "subscriber_id", null: false
-    t.bigint "assignment_id", null: false
+    t.bigint "alert_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["assignment_id"], name: "index_subscribers_on_assignment_id"
+    t.index ["alert_id"], name: "index_subscribers_on_alert_id"
     t.index ["subscriber_id"], name: "index_subscribers_on_subscriber_id"
   end
 
@@ -160,6 +160,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_104840) do
   add_foreign_key "chatrooms", "alerts"
   add_foreign_key "messages", "assignments"
   add_foreign_key "messages", "users", column: "worker_id"
-  add_foreign_key "subscribers", "assignments"
+  add_foreign_key "subscribers", "alerts"
   add_foreign_key "subscribers", "users", column: "subscriber_id"
 end

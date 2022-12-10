@@ -65,10 +65,20 @@
                 </div>
               <% end %>
           <% end %>
+
+          <%# Subscriptions %>
+          <%# <%= link_to "Subscribe", toggle_favorite_alert_path(@alert), remote: true, method: :post, class: "btn btn-primary fw-bold text-white" %>
+
+          <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
+            <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary fw-bold text-white" %>
+          <% else %>
+            <%= simple_form_for [@alert, @subscriber] do |f| %>
+              <%= f.submit "Subscribe", class: "btn btn-primary fw-bold text-white" %>
+            <% end %>
+          <% end %>
+
         </div>
       </div>
     </div>
-
-           <%# <%= link_to "Subscribe", edit_alert_path(@alert), class: "btn btn-warning rounded-3 my-2 fw-bold text-white" %>
   </div>
 </div>
