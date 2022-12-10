@@ -3,7 +3,7 @@
   <h3 class="my-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
   <div class="row d-flex">
     <div class="col-12 col-md-4">
-      <%= render "chatrooms/show" %>
+    <%= render "chatrooms/show" if @alert.chatroom %>
     </div>
 
     <div class="col-12 col-md-3">
@@ -32,8 +32,6 @@
 
           <%# Upvotes %>
             <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
-
-
 
         <div class="details-container">
           <p class="mt-3 fs-5 fw-bold"><%= @alert.address %></p>
