@@ -12,12 +12,12 @@
       <p><%= link_to "Send an alert", alerts_path, class: "fs-4 p-3 fw-bold btn btn-primary text-white rounded-pill" %></p>
     </div>
     <div class="col-12 col-lg-4 phone-container">
-      <%= cl_image_tag("smartphone_mockup_vsajye", height: 650 )%>
-      <div class="phone-map-container"
-            style="width: 280px; height: 590px; border-radius: 39px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      <%= cl_image_tag("smartphone_mockup_vsajye", height: 650, radius: 39 )%>
+      <div class="phone-map-container">
+        <div style="width: 280px; height: 590px; border-radius: 39px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
       </div>
     </div>
   </div>

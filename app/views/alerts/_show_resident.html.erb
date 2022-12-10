@@ -30,11 +30,11 @@
           <div class="details-container px-3">
             <p class="mt-3 fs-5 fw-bold"><%= @alert.address %></p>
             <p><%= @alert.description %></p>
-            <p class="fst-italic">Category: <%= @alert.category %><br>
+            <p>Category: <%= @alert.category %><br>
             <% if @alert.creator == current_user %>
-              You added this on <%= @alert.created_at.strftime('%b %d %Y') %><br>
+              You added this on <%= @alert.created_at.strftime("%B %e, %Y")%><br>
             <% else %>
-              Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %><br>
+              Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
             <% end %>
             <%= render "shared/status_bar" %><br>
             <%# Upvotes %>
