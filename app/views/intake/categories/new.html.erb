@@ -1,32 +1,25 @@
-<div class="newAlertContainer">
-<h2>Category</h2>
-  <div id="inputFields">
-        <%= simple_form_for(@category) do |f| %>
-          <div class="form-input" data-controller="tooltip">
-            <%= f.input :category,
-            as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'category-wrapper',
-              item_wrapper_class: 'category-item',
-              input_html: {class: 'category-selector', data: {tooltip_target: "tooltip"}},
-              collection: [
-                ['<i class="fa-solid fa-spray-can fs-1 text-white"></i>'.html_safe,"Vandalism"],
-                ['<i class="fa-solid fa-trash fs-1 text-white"></i>'.html_safe,"Littering"],
-                ['<i class="fa-solid fa-screwdriver-wrench fs-1 text-white"></i>'.html_safe,"Infrastructure"],
-                ['<i class="fa-solid fa-road fs-1 text-white"></i>'.html_safe,"Transportation"],
-                ['<i class="fa-solid fa-lightbulb fs-1 text-white"></i>'.html_safe,"New Idea"],
-                ['<i class="fa-solid fa-otter fs-1 text-white"></i>'.html_safe,"Other"]] %>
-
-          <%# <%= f.input :category,
-              as: :radio_buttons,
-              collection_wrapper_tag: 'div',
-              collection_wrapper_class: 'category-wrapper',
-              item_wrapper_class: 'category-item',
-              input_html: {class: 'category-selector'},
-              collection: ["Vandalism", "Littering", "Infrastructure", "Transportation", "New Idea", "Other"] %>
-          </div>
-            <%= f.submit '>', class: "btn btn-primary right fw-bold text-white" %>
-        <% end %>
-      </div>
+<div class="container d-flex flex-column" style="width:380px">
+  <div class="new-alert-container">
+    <h2 class="mt-3 text-primary text-center">New Alert</h2>
+    <div id="inputFields">
+      <%= simple_form_for(@category) do |f| %>
+        <div class="form-input" data-controller="tooltip">
+          <%= f.input :category,
+          as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: {class: 'category-selector', data: {tooltip_target: "tooltip"}},
+            collection: [
+              ['<i class="fa-solid fa-spray-can fs-1 text-white"></i>'.html_safe,"Vandalism"],
+              ['<i class="fa-solid fa-trash fs-1 text-white"></i>'.html_safe,"Littering"],
+              ['<i class="fa-solid fa-screwdriver-wrench fs-1 text-white"></i>'.html_safe,"Infrastructure"],
+              ['<i class="fa-solid fa-road fs-1 text-white"></i>'.html_safe,"Transportation"],
+              ['<i class="fa-solid fa-lightbulb fs-1 text-white"></i>'.html_safe,"New Idea"],
+              ['<i class="fa-solid fa-otter fs-1 text-white"></i>'.html_safe,"Other"]] %>
+          <%= f.submit '>', id: "new-alert-btn", class: "btn btn-primary right fw-bold text-white" %>
+          <% end %>
+        </div>
     </div>
   </div>
+</div>

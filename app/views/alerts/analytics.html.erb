@@ -1,0 +1,16 @@
+<div class="container w-75">
+  <%= render "shared/offcanvas" %>
+  <h3 class="pt-3 text-center">Cityview Analytics by <span class="logo-font fs-2">ouicity</span></h3>
+  <div class="status-container my-5">
+    <h5>Alert Status</h5>
+    <%=  column_chart Alert.group(:status).count, colors: ["#A760FF"] %>
+  </div>
+  <div class="alerts-by-day-container my-5">
+    <h5>Daily Submitted Alerts</h5>
+    <%= line_chart Alert.group_by_day(:created_at).count, colors: ["#FF6701"] %>
+  </div>
+  <div class="alerts-category-day-container my-5">
+    <h5>Alerts by Category</h5>
+    <%= line_chart Alert.group(:category).group_by_day(:created_at).count %>
+  </div>
+</div>

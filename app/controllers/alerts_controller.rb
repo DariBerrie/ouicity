@@ -3,7 +3,12 @@ class AlertsController < ApplicationController
   before_action :authenticate_user!, only: %i[index like show new edit]
 
   def index
-    @alerts = Alert.all
+    if params[:query].present?
+      @alerts = Alert.order(created_at: :desc).search_by_everything(params[:query])
+    else
+      @alerts = Alert.order(created_at: :desc)
+    end
+    @unresolved_alerts = Alert.where(status: "submitted").or(Alert.where(status: "in progress"))
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,
@@ -17,6 +22,9 @@ class AlertsController < ApplicationController
     @workers = User.where(role: "worker")
     @marker = { lat: @alert.geocode[0], lng: @alert.geocode[1] }
     @assignment = Assignment.new
+    @chatroom = @alert.chatroom
+    @chat_message = ChatMessage.new
+    @subscriber = @alert.subscribers.find { |s| s.subscriber_id == current_user.id } || Subscriber.new
   end
 
   def my_alerts
@@ -36,6 +44,7 @@ class AlertsController < ApplicationController
     @alert.creator_id = current_user.id
     if @alert.save
       redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
+      @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}", alert_id: @alert.id)
     else
       render :new, status: :unprocessable_entity
     end
@@ -69,6 +78,10 @@ class AlertsController < ApplicationController
       @alert.liked_by current_user
     end
     redirect_to alert_path(@alert)
+  end
+
+  def analytics
+    @alerts = Alert.order(created_at: :desc)
   end
 
   private

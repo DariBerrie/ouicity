@@ -2,6 +2,9 @@ class Alert < ApplicationRecord
   # belongs_to :user
   belongs_to :creator, class_name: 'User'
   has_one :assignment
+  has_many :subscribers
+  has_one :chatroom
+
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
@@ -13,6 +16,13 @@ class Alert < ApplicationRecord
                                     too_short: "%{count} characters is the minimum required" }
 
   acts_as_votable
+
+  include PgSearch::Model
+  pg_search_scope :search_by_everything,
+                  against: %i[title description category address],
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   # These statuses are placeholders until we have a better idea
   # of what they should be.

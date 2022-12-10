@@ -1,6 +1,8 @@
 class AssignmentsController < ApplicationController
   def index
-    @assignments = Assignment.all
+    @user = current_user
+    @assignments = Assignment.includes(:alert).where(worker: @user)
+    @subscribers = Subscriber.includes(:subscriber).where(subscriber: @user)
   end
 
   def show

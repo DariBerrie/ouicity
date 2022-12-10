@@ -8,6 +8,8 @@
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^7.0.4",
     "bootstrap": "^5.2.2",
+    "chart.js": "^4.0.1",
+    "chartkick": "^4.2.0",
     "stimulus-carousel": "^4.0.0",
     "typed.js": "^2.0.12",
     "webpack": "^5.75.0",

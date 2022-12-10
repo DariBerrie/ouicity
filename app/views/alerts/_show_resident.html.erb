@@ -1,7 +1,6 @@
 <div class="container">
-    <h2 class="my-4"><%= @alert.title %></h2>
-    <div class="row d-flex">
-      <div class="col-12 col-md-6">
+    <h2 class="my-4 text-center"><%= @alert.title %></h2>
+      <div class="col-12">
         <div class="alert-container">
           <div class="carousel-container">
             <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
@@ -15,11 +14,11 @@
               <div class="carousel-inner rounded-4">
                 <% @alert.photos.each do |photo| %>
                   <% if photo == @alert.photos[0] %>
-                    <div class="carousel-item active" style="height:380px">
+                    <div class="carousel-item active">
                       <%= cl_image_tag photo.key, class: "d-block", style: "height:auto; width:100%", crop: :fill, gravity: :center %>
                     </div>
                   <% else %>
-                    <div class="carousel-item" style="height:380px">
+                    <div class="carousel-item">
                       <%= cl_image_tag photo.key, class: "d-block", style: "height:auto; width:100%", crop: :fill, gravity: :center %>
                     </div>
                   <% end %>
@@ -28,19 +27,18 @@
             </div>
           </div>
 
-          <div class="details-container">
+          <div class="details-container px-3">
             <p class="mt-3 fs-5 fw-bold"><%= @alert.address %></p>
             <p><%= @alert.description %></p>
-            <p class="fst-italic">Category: <%= @alert.category %><br>
+            <p>Category: <%= @alert.category %><br>
             <% if @alert.creator == current_user %>
-              You added this on <%= @alert.created_at.strftime('%b %d %Y') %><br>
+              You added this on <%= @alert.created_at.strftime("%B %e, %Y")%><br>
             <% else %>
-              Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime('%d %b %Y') %><br>
+              Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
             <% end %>
-            <%= render "shared/status_bar" %></p>
-
+            <%= render "shared/status_bar" %><br>
             <%# Upvotes %>
-            <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
+            <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %></p>
 
             <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
 
@@ -49,17 +47,15 @@
             <% end %>
           </div>
         </div>
-      </div>
 
-      <div class="col-12 col-md-5">
-        <div class="map-container">
-          <div style="width: 100%; height: 628px; border-radius:25px;"
+
+        <div class="map-container d-flex flex-column align-items-center">
+          <div style="width: 100%; height: 300px; border-radius:25px;"
             data-controller="alert-show-map"
             data-alert-show-map-marker-value="<%= @marker.to_json %>"
             data-alert-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
             data-alert-show-map-target="map">
-          </div>
         </div>
       </div>
-     </div>
+    </div>
 </div>
