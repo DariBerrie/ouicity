@@ -4,3 +4,12 @@
   border-radius: 25px;
   padding: 16px;
 }
+.category-icon {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $pink;
+  width:70px;
+  height:70px;
+  border-radius:50%;
+}

@@ -8,7 +8,7 @@ class AlertsController < ApplicationController
     else
       @alerts = Alert.order(created_at: :desc)
     end
-
+    @unresolved_alerts = Alert.where(status: "submitted").or(Alert.where(status: "in progress"))
     @markers = @alerts.geocoded.map do |alert|
       {
         lat: alert.latitude,
