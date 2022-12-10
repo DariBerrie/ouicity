@@ -52,10 +52,14 @@ class AlertsController < ApplicationController
   end
 
   def update
-    if @alert.update(alert_params)
-      redirect_to alert_path(@alert), notice: "Alert updated successfully."
+    if current_user == 'resident'
+      if @alert.update(alert_params)
+        redirect_to alert_path(@alert), notice: "Alert updated successfully."
+      else
+        render :edit, status: :unprocessable_entity
+      end
     else
-      render :edit, status: :unprocessable_entity
+      @alert.update(alert_params)
     end
   end
 
