@@ -1,10 +1,11 @@
 // Specific CSS for your home-page
 .logo-font {
   font-family: "Abril Fatface", cursive;
-  font-size: 60px;
+  font-size: 48px;
 }
 .phone-container {
   position: relative;
+  margin-left: -16px;
 
   .phone-map-container {
     position: absolute;
@@ -19,30 +20,71 @@
   margin: 36px 0 36px 0;
 }
 
-.text-container {
-  margin-left: 24px;
-  width: 55%;
-}
+@media(min-width: 720px) {
+  .text-container {
+    margin-left: 24px;
+    width: 55%;
+    p {
+      font-size: 1.25rem;
+    }
 
-.carousel-img {
-  border-radius: 50%;
-  width: 300px;
-}
-
-.row{
-  position: relative;
-
-  .left-nav-icon {
-    width: 80px;
-    position: absolute;
-    top: 110px;
-    left: 48px;
   }
+  .row{
+    position: relative;
+    .right-nav-icon {
+      width: 80px;
+      position: absolute;
+      top: 110px;
+      right: 24px;
+    }
+    .left-nav-icon {
+      width: 80px;
+      position: absolute;
+      top: 110px;
+      left: 24px;
+    }
+  }
+  .carousel-img {
+    border-radius: 50%;
+    width: 300px;
+  }
+}
 
-  .right-nav-icon {
-    width: 80px;
-    position: absolute;
-    top: 110px;
-    right: 76px;
+@media(max-width: 560px) {
+
+  .title-container {
+    h1, h2, p {
+      text-align: center;
+    }
+
+  }
+  .text-container {
+    margin: 16px 16px 0 16px;
+    width: 300px;
+    h3 {
+      text-align: center;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+  .row{
+    position: relative;
+    .right-nav-icon {
+      width: 80px;
+      position: absolute;
+      top: 110px;
+      right: 24px;
+    }
+    .left-nav-icon {
+      width: 80px;
+      position: absolute;
+      top: 110px;
+      left: 24px;
+    }
+  }
+  .carousel-img {
+    border-radius: 50%;
+    width: 200px;
   }
 }
