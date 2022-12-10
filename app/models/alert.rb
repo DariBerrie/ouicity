@@ -2,6 +2,7 @@ class Alert < ApplicationRecord
   # belongs_to :user
   belongs_to :creator, class_name: 'User'
   has_one :assignment
+  has_one :chatroom
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

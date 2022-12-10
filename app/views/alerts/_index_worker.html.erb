@@ -12,20 +12,21 @@
         </div>
       </div>
     </div>
+    <h2 class="text-center">Your Dashboard</h3>
     <div data-controller="search-worker-alerts"  class="col-12 col-lg-12">
       <div class="header-bar d-flex flex-row justify-content-between align-items-center">
         <div class="search-box my-3 shadow-sm d-flex flex-column w-50">
-          <h3>Bonjour <%= current_user.first_name %>!</h3>
+          <h4>Bonjour <%= current_user.first_name %>!</h4>
           <%= form_with url: alerts_path, method: :get, class: "d-flex" do %>
             <%= text_field_tag :query,
               params[:query],
               class: "form-control rounded-left background-white fs-6",
               placeholder: "What is today's focus?"
             %>
-            <%= submit_tag "Search", class: "btn btn-primary rounded-right fs-6 text-white" %>
+            <%= submit_tag "Search", class: "btn btn-primary rounded-right fs-6 text-white fw-bold" %>
           <% end %>
         </div>
-        <h1><%= @unresolved_alerts.count %> unresolved alerts</h1>
+        <h2><%= @unresolved_alerts.count %> unresolved alerts</h2>
       </div>
       <%= column_chart Alert.group(:category).count, colors: ["#A760FF"] %>
       <%# <div class="category-count-container d-flex flex-row justify-content-evenly">

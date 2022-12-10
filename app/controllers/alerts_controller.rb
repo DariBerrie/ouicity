@@ -22,7 +22,7 @@ class AlertsController < ApplicationController
     @workers = User.where(role: "worker")
     @marker = { lat: @alert.geocode[0], lng: @alert.geocode[1] }
     @assignment = Assignment.new
-    @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}")
+    @chatroom = @alert.chatroom
     @chat_message = ChatMessage.new
   end
 
@@ -43,6 +43,7 @@ class AlertsController < ApplicationController
     @alert.creator_id = current_user.id
     if @alert.save
       redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
+      @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}", alert_id: @alert.id)
     else
       render :new, status: :unprocessable_entity
     end
@@ -75,6 +76,10 @@ class AlertsController < ApplicationController
       @alert.liked_by current_user
     end
     redirect_to alert_path(@alert)
+  end
+
+  def analytics
+    @alerts = Alert.order(created_at: :desc)
   end
 
   private
