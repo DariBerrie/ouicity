@@ -1,10 +1,18 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
-    <%= link_to root_path, class: "d-flex flex-row navbar-brand",
+    <% if user_signed_in? %>
+    <%= link_to alerts_path, class: "d-flex flex-row navbar-brand",
         input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
       <%= cl_image_tag("ouicity_logo_j5rhro") %>
       <h2 id="logo" class="ms-3">ouicity</h2>
     <% end %>
+    <% else %>
+      <%= link_to root_path, class: "d-flex flex-row navbar-brand",
+        input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
+      <%= cl_image_tag("ouicity_logo_j5rhro") %>
+      <h2 id="logo" class="ms-3">ouicity</h2>
+    <% end %>
+      <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
