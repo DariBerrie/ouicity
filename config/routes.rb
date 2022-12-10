@@ -18,12 +18,14 @@ Rails.application.routes.draw do
       get :analytics
     end
     resources :assignments, only: %i[index create new edit update]
+    resources :subscribers, only: %i[create new]
     member do
       put "like", to: "alerts#like"
     end
   end
 
   resources :assignments, only: %i[index create new edit update]
+  resources :subscribers, only: %i[destroy]
 
   namespace :intake do
       resources :categories, only: %i[new create]

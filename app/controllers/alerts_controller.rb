@@ -24,6 +24,7 @@ class AlertsController < ApplicationController
     @assignment = Assignment.new
     @chatroom = @alert.chatroom
     @chat_message = ChatMessage.new
+    @subscriber = @alert.subscribers.find { |s| s.subscriber_id == current_user.id } || Subscriber.new
   end
 
   def my_alerts
