@@ -1,4 +1,4 @@
 class Subscriber < ApplicationRecord
-  belongs_to :user
-  belongs_to :assignment
+  belongs_to :subscriber, class_name: 'User'
+  belongs_to :alert
 end
