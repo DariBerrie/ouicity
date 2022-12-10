@@ -1,3 +1,4 @@
+## This is for the contact form on the homepage
 class ContactsController < ApplicationController
   def new
     @contact = Contact.new

@@ -2,12 +2,10 @@
   <br />
   <h1>My Alerts</h1>
 
-    <div class="my-alert-card justify-content-center">
-      <% @alerts.each do |alert| %>
-        <b><%= alert.title %>  </b>
-        <em>Added <%= alert.created_at.strftime('%d %b %Y') %>   </em>
-        <%= link_to "View", alert_path(alert), class: "btn btn-sm btn-warning" %>
-      <% end %>
+    <div data-alerts-target="list" id="listings" class="listings">
+        <% @alerts.each do |alert| %>
+          <%= render 'shared/alert_banner', alert: alert %>
+        <% end %>
     </div>
 
 </div>
