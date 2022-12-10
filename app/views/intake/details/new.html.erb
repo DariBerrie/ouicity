@@ -1,20 +1,24 @@
-<div class="newAlertContainer">
-  <h2>Details</h2>
-  <div id="inputFields">
-        <%= simple_form_for(@detail) do |f| %>
-          <div class="form-input">
-            <%= f.input :address,
-                input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
-                wrapper_html: {data: {controller: "address-autocomplete",
-                address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
-                %>
-            <%= f.input :title %>
-            <%= f.input :description %>
-            <%= f.input :photos, as: :file, input_html: { multiple: true } %>
-          </div>
-          <div class='buttons'><%= f.submit '<', :name => "back_button", class: "btn btn-primary fw-bold text-white" %>
-          <%= f.submit 'Add Alert', class: "btn btn-primary fw-bold text-white" %> </div>
-        <% end %>
+<div class="container d-flex flex-column align-items-center">
+  <div class="new-alert-container px-1">
+    <h2 class="mt-3 text-primary text-center">New Alert</h2>
+    <div id="inputFields">
+          <%= simple_form_for(@detail) do |f| %>
+            <div class="form-input px-2">
+              <%= f.input :address,
+                  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete",
+                  address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}
+                  %>
+              <%= f.input :title , label: false, placeholder: "Title" %>
+              <%= f.input :description, label: false, placeholder: "Description" %>
+              <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+            </div>
+            <div class='buttons'>
+              <%= f.submit '<', class: "left btn btn-primary fw-bold text-white" %>
+              <%= f.submit 'Add Alert', class: "btn btn-primary fw-bold text-white" %>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
+  </div>
 </div>
