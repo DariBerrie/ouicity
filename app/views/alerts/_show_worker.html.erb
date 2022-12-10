@@ -67,19 +67,21 @@
 
           <%# Status %>
           <div class="status">
+          <div class='status-container'>
             <%= render "shared/status_bar" %>
-              <% if current_user == @alert.assignment.worker %>
+            <% if current_user == @alert.assignment.worker %>
+              </div>
                 <div class="container" >
                   <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
                     <div class="status-input">
-                      <%=f.input :status, collection: Alert.statuses.keys, label: false, style:"margin: 0 important!" %>
+                      <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false %>
                       <%=f.submit 'Update status', class: "btn btn-primary" %>
                       <% end %>
                     </div>
                 </div>
                <% end %>
            </div>
-          
+
           <%# Subscriptions %>
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
             <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary fw-bold text-white" %>
@@ -89,7 +91,7 @@
             <% end %>
           <% end %>
           <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
-          
+
         </div>
       </div>
     </div>
