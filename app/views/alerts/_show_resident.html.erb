@@ -42,6 +42,8 @@
             <%# Upvotes %>
             <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
 
+            <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
+
             <% if @alert.creator == current_user %>
               <%= link_to "Edit this alert", edit_alert_path(@alert), class: "btn btn-warning rounded-3 my-2 fw-bold text-white" %>
             <% end %>
