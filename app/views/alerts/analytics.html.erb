@@ -1,4 +1,6 @@
 <div class="container w-75">
+  <%= render "shared/offcanvas" %>
+  <h3 class="pt-3 text-center">Cityview Analytics by <span class="logo-font fs-2">ouicity</span></h3>
   <div class="status-container my-5">
     <h5>Alert Status</h5>
     <%=  column_chart Alert.group(:status).count, colors: ["#A760FF"] %>

@@ -2,13 +2,10 @@
   <%= render "shared/offcanvas" %>
   <h3 class="my-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
   <div class="row d-flex">
-    <div class="col-12 col-md-4">
-    <%= render "chatrooms/show" if @alert.chatroom %>
-    </div>
-
-    <div class="col-12 col-md-3">
+    <div class="col-12 col-md-7 d-flex flex-row">
+      <%= render "chatrooms/show" if @alert.chatroom %>
       <div class="map-container mb-2">
-        <div style="width: 100%; height: 628px; border-radius:25px;"
+        <div style="width: 300px; height: calc(100vh - 200px); border-top-right-radius:24px; border-bottom-right-radius:24px;"
           data-controller="alert-show-map"
           data-alert-show-map-marker-value="<%= @marker.to_json %>"
           data-alert-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
@@ -28,34 +25,37 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
               </div>
             <% end %>
-
-
-          <%# Upvotes %>
-            <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
+            <div class="carousel-inner rounded-4" style="height: 300px;">
+              <% @alert.photos.each do |photo| %>
+                <% if photo == @alert.photos[0] %>
+                  <div class="carousel-item active">
+                    <%= cl_image_tag photo.key, class: "d-block w-100", gravity: :center %>
+                  </div>
+                <% else %>
+                  <div class="carousel-item">
+                    <%= cl_image_tag photo.key, class: "d-block w-100", gravity: :center %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
         <div class="details-container">
-          <p class="mt-3 fs-5 fw-bold"><%= @alert.address %></p>
+          <p class=" fs-5 fw-bold"><%= @alert.address %></p>
           <p><%= @alert.description %></p>
 
-          <p>Category: <%= @alert.category %><br>
+          <p><b>Category:</b> <%= @alert.category %><br>
           <% if @alert.creator == current_user %>
             You added this on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
           <% else %>
-            Added by: <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
+            <b>Added by:</b> <%= @alert.creator.first_name %> on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
           <% end %>
-          <%= @alert.upvotes %> upvotes <br>
-          <%= render "shared/status_bar" %></p>
-             <div class="container m-2">
-                <%= simple_form_for(@alert) do |f| %>
-                  <div class="form-input">
-                    <%=f.input :status, collection: Alert.statuses.keys %>
-                  </div>
-                  <%= f.submit 'Update', class: "btn btn-primary" %>
-                <% end %>
-              </div>
+          <%= @alert.upvotes %> upvotes</p>
+
           <%# Assignments%>
           <% if @alert.assignment %>
-            <p class="mt-3"> Assigned to: <%= @alert.assignment.worker.first_name %></p>
+            <p style="margin-bottom:0"><b>Assigned to: </b><%= @alert.assignment.worker.first_name %></p>
           <% else %>
               <%= simple_form_for [@alert, @assignment] do |f| %>
                 <div class="container mt-2 d-flex flex-row align-items-center">
@@ -65,6 +65,15 @@
                 </div>
               <% end %>
           <% end %>
+
+          <%# Status %>
+          <%= render "shared/status_bar" %>
+             <% if current_user == @alert.assignment.worker %>
+                <%= simple_form_for(@alert) do |f| %>
+                  <%=f.input :status, collection: Alert.statuses.keys %>
+                  <%= f.submit 'Update', class: "btn btn-primary text-white fw-bold" %>
+                <% end %>
+            <% end %>
 
           <%# Subscriptions %>
           <%# <%= link_to "Subscribe", toggle_favorite_alert_path(@alert), remote: true, method: :post, class: "btn btn-primary fw-bold text-white" %>
