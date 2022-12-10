@@ -28,34 +28,12 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
               </div>
             <% end %>
-            
-            <%= render "shared/status_bar" %></p>
-             <div class="container m-2">
-                <%= simple_form_for(@alert) do |f| %>
-                  <div class="form-input">
-                    <%=f.input :status, collection: Alert.statuses.keys %>
-                  </div>
-                  <%= f.submit 'Update', class: "btn btn-primary" %>
-                <% end %>
-              </div>
+
 
           <%# Upvotes %>
             <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %>
 
-          <%# Assignments%>
-            <% if @alert.assignment %>
-              <p class="mt-3"> Assigned to: <%= @alert.assignment.worker.first_name %></p>
-            <% else %>
-              <div class="container m-2">
-                <%= simple_form_for( [@alert, @assignment ]) do |f| %>
-                  <div class="form-input">
-                    <%=f.input :worker_id, collection: @workers, label_method: :first_name, value_method: :id  %>
-                  </div>
-                <% end %>
-              <% end %>
-            </div>
-          </div>
-        </div>
+
 
         <div class="details-container">
           <p class="mt-3 fs-5 fw-bold"><%= @alert.address %></p>
@@ -69,6 +47,14 @@
           <% end %>
           <%= @alert.upvotes %> upvotes <br>
           <%= render "shared/status_bar" %></p>
+             <div class="container m-2">
+                <%= simple_form_for(@alert) do |f| %>
+                  <div class="form-input">
+                    <%=f.input :status, collection: Alert.statuses.keys %>
+                  </div>
+                  <%= f.submit 'Update', class: "btn btn-primary" %>
+                <% end %>
+              </div>
           <%# Assignments%>
           <% if @alert.assignment %>
             <p class="mt-3"> Assigned to: <%= @alert.assignment.worker.first_name %></p>
