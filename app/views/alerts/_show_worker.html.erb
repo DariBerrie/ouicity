@@ -44,7 +44,6 @@
         <div class="details-container">
           <p class=" fs-5 fw-bold"><%= @alert.address %></p>
           <p><%= @alert.description %></p>
-
           <p><b>Category:</b> <%= @alert.category %><br>
           <% if @alert.creator == current_user %>
             You added this on <%= @alert.created_at.strftime("%B %e, %Y") %><br>
@@ -67,17 +66,21 @@
           <% end %>
 
           <%# Status %>
-          <%= render "shared/status_bar" %>
-             <% if current_user == @alert.assignment.worker %>
-                <%= simple_form_for(@alert) do |f| %>
-                  <%=f.input :status, collection: Alert.statuses.keys %>
-                  <%= f.submit 'Update', class: "btn btn-primary text-white fw-bold" %>
-                <% end %>
-            <% end %>
-
+          <div class="status">
+            <%= render "shared/status_bar" %>
+              <% if current_user == @alert.assignment.worker %>
+                <div class="container" >
+                  <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
+                    <div class="status-input">
+                      <%=f.input :status, collection: Alert.statuses.keys, label: false, style:"margin: 0 important!" %>
+                      <%=f.submit 'Update status', class: "btn btn-primary" %>
+                      <% end %>
+                    </div>
+                </div>
+               <% end %>
+           </div>
+          
           <%# Subscriptions %>
-          <%# <%= link_to "Subscribe", toggle_favorite_alert_path(@alert), remote: true, method: :post, class: "btn btn-primary fw-bold text-white" %>
-
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
             <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary fw-bold text-white" %>
           <% else %>
@@ -85,7 +88,8 @@
               <%= f.submit "Subscribe", class: "btn btn-primary fw-bold text-white" %>
             <% end %>
           <% end %>
-
+          <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
+          
         </div>
       </div>
     </div>

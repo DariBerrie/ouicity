@@ -1,17 +1,19 @@
-<% case @alert.status %>
-<% when "submitted" %>
-  <span class="text-muted">
-    <%= image_tag("load_red.gif", width: 50) %>
-    Alert <%= @alert.status %>
-  </span>
-<% when "in_progress" %>
-  <span class="text-muted">
-    <%= image_tag("load_yellow.gif", width: 50) %>
-    Alert in progress
-  </span>
-<% when "resolved" %>
-  <span class="text-muted">
-    <%= image_tag("load_green.gif", width: 50) %>
-    Alert <%= @alert.status %>
-  </span>
-<% end %>
+<%# <div data-change-status-target="status"> %>
+  <% case @alert.status %>
+  <% when "submitted" %>
+    <span class="container text-muted">
+      <%= image_tag("load_red.gif", width: 50) %>
+      Alert <%= @alert.status %>
+    </span>
+  <% when "in_progress" %>
+    <span class="container text-muted">
+      <%= image_tag("load_yellow.gif", width: 50) %>
+      Alert in progress
+    </span>
+  <% when "resolved" %>
+    <span class="container text-muted">
+      <%= image_tag("load_green.gif", width: 50) %>
+      Alert <%= @alert.status %>
+    </span>
+  <% end %>
+<%# </div> %>
