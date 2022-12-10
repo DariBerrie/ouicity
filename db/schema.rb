@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_10_104840) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_133950) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -110,9 +110,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_10_104840) do
 
   create_table "subscribers", force: :cascade do |t|
     t.bigint "subscriber_id", null: false
-    t.bigint "alert_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "alert_id"
     t.index ["alert_id"], name: "index_subscribers_on_alert_id"
     t.index ["subscriber_id"], name: "index_subscribers_on_subscriber_id"
   end
