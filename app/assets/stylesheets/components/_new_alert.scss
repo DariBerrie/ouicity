@@ -4,72 +4,77 @@
   margin: 5em 1em;
   background-color: #fbe4e2;
   border-radius: 20px;
-}
 
-.form-input {
-  margin: 1em, 3em, 3em;
-  padding-bottom: 2em;
-  padding-top: 1em;
-}
 
-.category-wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.category-item {
-  flex: 0 0 30%;
-}
-
-.category-selector {
-  position: absolute;
-  transform: scale(0);
-}
-
-.category-selector + label {
-
-  display: block;
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  padding: 20px 0px 20px 0px;
-  margin: 10px 0px 10px 0px;
-  border-radius: 16px;
-  background-color: #FC7D76;
-
-  &:hover {
-    background-color: #fda39e;
+  .form-input {
+    margin: 1em, 3em, 3em;
+    padding-bottom: 2em;
+    padding-top: 1em;
   }
-}
 
-.category-selector:checked + label {
-  background-color: #fd4f45 !important;
-  color: rgb(255, 255, 255) !important;
-}
+  .col-form-label {
+    display: none;
+  }
 
-.category-selector + label::before{
-  content: '';
-  position:absolute;
-  top:0px;
-  left:0px;
+  .category-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
 
-  background-size: cover;
-}
+  .category-item {
+    flex: 0 0 30%;
+  }
 
-.buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
+  .category-selector {
+    position: absolute;
+    transform: scale(0);
+  }
 
-.right {
-  display: flex;
-  margin-left: auto;
-  border-radius: 12px;
-}
+  .category-selector + label {
 
-#new-alert-btn {
-  border-radius: 12px;
+    display: block;
+    cursor: pointer;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+    margin: 10px 0px 10px 0px;
+    border-radius: 16px;
+    background-color: #FC7D76;
+
+    &:hover {
+      background-color: #fda39e;
+    }
+  }
+
+  .category-selector:checked + label {
+    background-color: #fd4f45 !important;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .category-selector + label::before{
+    content: '';
+    position:absolute;
+    top:0px;
+    left:0px;
+
+    background-size: cover;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .right {
+    display: flex;
+    margin-left: auto;
+    border-radius: 12px;
+  }
+
+  #new-alert-btn {
+    border-radius: 12px;
+  }
 }

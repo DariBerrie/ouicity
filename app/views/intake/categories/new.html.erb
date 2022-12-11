@@ -1,7 +1,8 @@
 <div class="container d-flex flex-column" style="width:380px">
   <div class="new-alert-container">
-    <h2 class="mt-3 text-primary text-center">New Alert</h2>
-    <div id="inputFields">
+    <h2 class="mt-3 text-primary text-center">New Alert</h5>
+    <h5 class="m-0 text-center">Choose a category</h4>
+    <div id="input-fields-container">
       <%= simple_form_for(@category) do |f| %>
         <div class="form-input" data-controller="tooltip">
           <%= f.input :category,
@@ -16,7 +17,7 @@
               ['<i class="fa-solid fa-screwdriver-wrench fs-1 text-white"></i>'.html_safe,"Infrastructure"],
               ['<i class="fa-solid fa-road fs-1 text-white"></i>'.html_safe,"Transportation"],
               ['<i class="fa-solid fa-lightbulb fs-1 text-white"></i>'.html_safe,"New Idea"],
-              ['<i class="fa-solid fa-otter fs-1 text-white"></i>'.html_safe,"Other"]] %>
+              ['<i class="fa-solid fa-otter fs-1 text-white"></i>'.html_safe,"Other"]]%>
           <%= f.submit '>', id: "new-alert-btn", class: "btn btn-primary right fw-bold text-white" %>
           <% end %>
         </div>
