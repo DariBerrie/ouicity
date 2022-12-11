@@ -26,3 +26,12 @@
 .navbar-nav a {
   text-decoration: none;
 }
+
+@media(max-width: 560px) {
+  #logo {
+    display: none;
+  }
+  li {
+    display:inline-flex;
+  }
+}
