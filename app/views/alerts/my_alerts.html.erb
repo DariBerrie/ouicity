@@ -1,11 +1,8 @@
-<div class="container justify-content-center mb-5 pb-4">
-  <br />
-  <h1>My Alerts</h1>
-
-    <div data-alerts-target="list" id="listings" class="listings">
-        <% @alerts.each do |alert| %>
-          <%= render 'shared/alert_banner', alert: alert %>
-        <% end %>
-    </div>
-
+<div class="container justify-content-center">
+  <h1 class="py-4 text-center">My Alerts</h1>
+  <div id="listings" class="listings" style="margin-top:0; padding-top:0;">
+      <% @alerts.each do |alert| %>
+        <%= render 'shared/alert_banner', alert: alert %>
+      <% end %>
+  </div>
 </div>
