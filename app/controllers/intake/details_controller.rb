@@ -18,9 +18,9 @@ module Intake
         @alert = Alert.create!(full_params)
         @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}", alert_id: @alert.id)
         session.delete('detail')
-        redirect_to alert_path(@alert)
+        redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
       else
-        render :new
+        render :new, status: :unprocessable_entity
       end
     end
 
