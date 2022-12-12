@@ -4,6 +4,8 @@
     <div class="col-12 col-lg-6">
       <div class="map-container">
         <div class='map-size'
+          style="border-bottom-left-radius:24px;
+                 border-bottom-right-radius:24px;"
           data-controller="map"
           data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
           data-map-markers-value="<%= @markers.to_json %>"

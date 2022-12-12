@@ -65,7 +65,8 @@
 
   .buttons {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin: 0 16px;
   }
 
   .right {
@@ -77,4 +78,15 @@
   #new-alert-btn {
     border-radius: 12px;
   }
+  .mapboxgl-ctrl-geocoder--input {
+    height: 38px;
+    font-family: $body-font;
+    font-size: 1rem;
+    line-height:1.5;
+    color: #0e0000;
+    background-color: white;
+  }
+  .mapboxgl-ctrl-geocoder--icon-search {
+    top: 8px;
+}
 }
