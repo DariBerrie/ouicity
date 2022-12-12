@@ -22,3 +22,11 @@ body {
   display:flex;
   flex-direction: column;
 }
+
+.valid {
+  border:1px solid rgb(238, 127, 80)
+}
+
+.invalid {
+  border:1px solid rgb(238, 127, 80)
+}
