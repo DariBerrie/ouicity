@@ -81,6 +81,11 @@ class AlertsController < ApplicationController
   end
 
   def analytics
+    if current_user.role != "worker"
+      flash[:alert] = "You are not authorized to view this page."
+      redirect_to root_path
+      flash[:alert]
+    end
     @alerts = Alert.order(created_at: :desc)
   end
 
