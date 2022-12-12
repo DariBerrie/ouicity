@@ -1,6 +1,9 @@
 <div class="container">
   <%= render "shared/offcanvas" %>
-  <h3 class="my-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
+  <%= link_to alerts_path, class: "text-decoration-none", style: "color: #dcd9d7" do %>
+    <i class="fa-solid fa-backward py-3"></i> Back to dashboard
+  <% end %>
+  <h3 class="mb-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
   <div class="row d-flex">
     <div class="col-12 col-md-7 d-flex flex-row">
       <%= render "chatrooms/show" if @alert.chatroom %>
@@ -63,7 +66,7 @@
                     <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
                       <div class="status-input">
                         <%=f.input :status, collection: Alert.statuses.keys, label: false, style:"margin: 0 important!" %>
-                        <%=f.submit 'Update status', class: "btn btn-primary" %>
+                        <%=f.submit 'Update status', class: "btn btn-info fw-bold text-white" %>
                         <% end %>
                       </div>
                   </div>
@@ -74,7 +77,7 @@
                 <div class="container mt-2 d-flex flex-row align-items-center">
                   <%=f.input :worker_id, label: false, collection: @workers, label_method: :first_name, value_method: :id,
                               input_html: { style: "background-color:white; margin-top:15px; margin-left:-8px; width:250px;" }%>
-                  <%= f.submit 'Assign', class: "btn btn-primary fw-bold text-white" %>
+                  <%= f.submit 'Assign', class: "btn btn-info fw-bold text-white" %>
                 </div>
               <% end %>
           <% end %>
@@ -87,12 +90,10 @@
           <% else %>
           <div>
             <%= simple_form_for [@alert, @subscriber] do |f| %>
-              <%= f.submit "  Subscribe  ", class: "btn btn-primary fw-bold text-white" %>
+              <%= f.submit "  Subscribe  ", class: "btn btn-warning rounded-4 fw-bold text-white" %>
             <% end %>
           </div>
           <% end %>
-          <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
-
         </div>
       </div>
     </div>
