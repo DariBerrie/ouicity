@@ -27,7 +27,7 @@ export default class extends Controller {
 
     geocoder.options.placeholder = "Enter your address..."
 
-    if (document.getElementsByClassName('geocoder').length === 1) {
+    if (document.getElementsByClassName('mapboxgl-ctrl-geocoder').length === 0) {
       document.getElementById('geocoder').appendChild(geocoder.onAdd(this.map))
     }
 
