@@ -1,3 +1,21 @@
 .form-control {
   background-color: white;
 }
+
+:valid.form-control {
+  border-color: rgb(238, 127, 80) !important;
+  box-shadow: inherit !important;
+}
+
+.form-check-label {
+  color: black;
+}
+
+.form-check-input.is-valid ~ .form-check-label {
+  color: black;
+  border-color: rgba(0, 0, 0, 0.25);
+}
+
+.was-validated .form-check-input:valid, .form-check-input.is-valid {
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
