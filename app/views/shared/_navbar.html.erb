@@ -1,18 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
-    <% if user_signed_in? %>
-    <%= link_to alerts_path, class: "d-flex flex-row navbar-brand",
+    <%= link_to user_signed_in? ? alerts_path : root_path, class: "d-flex flex-row navbar-brand",
         input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
       <%= cl_image_tag("ouicity_logo_j5rhro") %>
       <h2 id="logo" class="ms-3">ouicity</h2>
     <% end %>
-    <% else %>
-      <%= link_to root_path, class: "d-flex flex-row navbar-brand",
-        input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
-      <%= cl_image_tag("ouicity_logo_j5rhro") %>
-      <h2 id="logo" class="ms-3">ouicity</h2>
-    <% end %>
-      <% end %>
 
       <ul class="navbar-nav me-1 mb-1 d-flex flex-row align-self-end justify-content-evenly">
         <% if user_signed_in? && current_user.role == "resident" %>
