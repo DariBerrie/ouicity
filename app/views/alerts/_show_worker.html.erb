@@ -80,14 +80,16 @@
           <% end %>
 
           <%# Subscriptions %>
+          <br>
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
-            <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary fw-bold text-white" %>
+            <div>
+            <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary rounded-4 fw-bold text-white" %>
+            </div>
           <% else %>
             <%= simple_form_for [@alert, @subscriber] do |f| %>
-              <%= f.submit "Subscribe", class: "btn btn-primary fw-bold text-white" %>
+              <%= f.submit "  Subscribe   ", class: "btn btn-warning rounded-4 fw-bold text-white" %>
             <% end %>
           <% end %>
-          <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
 
         </div>
       </div>
