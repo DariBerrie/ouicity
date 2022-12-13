@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :messages
   has_many :chat_messages
   has_many :subscribers
+  has_many :notifications, as: :recipient, dependent: :destroy
 
   enum role: { resident: 0, worker: 1 }
 

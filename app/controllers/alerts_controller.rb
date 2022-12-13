@@ -16,6 +16,7 @@ class AlertsController < ApplicationController
         info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )
       }
     end
+    @notifications = Notification.where(recipient: current_user)
   end
 
   def show

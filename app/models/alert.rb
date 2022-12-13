@@ -4,6 +4,7 @@ class Alert < ApplicationRecord
   has_one :assignment
   has_many :subscribers
   has_one :chatroom
+  has_noticed_notifications
 
 
   geocoded_by :address
@@ -33,7 +34,13 @@ class Alert < ApplicationRecord
   }
   has_many_attached :photos
 
+  after_update :notify_user
+
   def assigned?
     return self.assignment
+  end
+
+  def notify_user
+    StatusNotification.with(alert: self).deliver_later(creator)
   end
 end

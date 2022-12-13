@@ -25,8 +25,8 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
-import SubmitOnSelectController from "./submit_on_select_controller"
-application.register("submit-on-select", SubmitOnSelectController)
+import Notification from 'stimulus-notification'
+application.register('notification', Notification)
 
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)
