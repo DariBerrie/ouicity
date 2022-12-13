@@ -1,5 +1,7 @@
 .chatroom {
   background: white;
+  background-image:url("chat_image.png");
+  background-size:contain;
   width:300px;
   height: calc(100vh - 200px);
   display: flex;

@@ -1,54 +1,36 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon sticky-top">
   <div class="container-fluid">
-    <% if user_signed_in? %>
-    <%= link_to alerts_path, class: "d-flex flex-row navbar-brand",
+    <%= link_to user_signed_in? ? alerts_path : root_path, class: "d-flex flex-row navbar-brand",
         input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
       <%= cl_image_tag("ouicity_logo_j5rhro") %>
       <h2 id="logo" class="ms-3">ouicity</h2>
     <% end %>
-    <% else %>
-      <%= link_to root_path, class: "d-flex flex-row navbar-brand",
-        input_html: {data: {bs_toggle: "offcanvas", bs_target: "#offcanvas"}} do %>
-      <%= cl_image_tag("ouicity_logo_j5rhro") %>
-      <h2 id="logo" class="ms-3">ouicity</h2>
-    <% end %>
-      <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto align-items-end">
+      <ul class="navbar-nav me-1 mb-1 d-flex flex-row align-self-end justify-content-evenly">
         <% if user_signed_in? && current_user.role == "resident" %>
-          <li class="mt-2 pe-1">
-            <p><%= link_to new_intake_category_path do %>
-              <%= cl_image_tag("jfxjmvn9fxu1j1xnqxra", width:30, height:30) %>
-              Send an alert</p>
-            <% end %>
-          </li>
           <li class="">
-            <p><%= link_to alerts_path do %>
-              <%= cl_image_tag("alerts_map_a38qo6", width:35, height:35) %>
-              All Alerts</p>
+            <%= link_to new_intake_category_path do %>
+              <%= cl_image_tag("send_alert_hiapls", width:40, height:40, alt: "Send an alert") %>
             <% end %>
           </li>
-          <li class="">
-            <p><%= link_to my_alerts_alerts_path do %>
-              <%= cl_image_tag("your_alerts_icon_2_ojjqca", width:48, height:48) %>
-              Your Alerts</p>
+          <li class="ms-3">
+            <%= link_to alerts_path do %>
+              <%= cl_image_tag("map_alerts_m45pav", width:40, height:40, alt: "All Alerts") %>
             <% end %>
           </li>
-          <li class="me-2">
-            <p><%= link_to edit_user_registration_path do %>
-              <%= cl_image_tag("pu4gww196dbv28fd1io1", width:30, height:30) %>
-              Settings</p>
+          <li class="ms-3">
+            <%= link_to my_alerts_alerts_path do %>
+              <%= cl_image_tag("user_alerts_pztpea", width:40, height:40, alt: "Your Alerts") %>
             <% end %>
           </li>
-          <li class="my-3 me-2">
-            <p><%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
-              <%= cl_image_tag("pqzzjloc9zxmizway0ne", width:25, height: 25) %>
-              Logout</p>
+          <li class="ms-3">
+            <%= link_to edit_user_registration_path do %>
+              <%= cl_image_tag("settings_3_p4ptmn", width:40, height:40, alt: "Settings") %>
+            <% end %>
+          </li>
+          <li class="ms-3">
+            <%= link_to destroy_user_session_path, data: {turbo_method: :delete} do %>
+              <%= cl_image_tag("logout_jayyxe", width:40, height: 40, atl: "Logout") %>
             <% end %>
           </li>
         <% elsif user_signed_in? && current_user.role == "worker" %>
@@ -61,6 +43,5 @@
           </li>
         <% end %>
       </ul>
-    </div>
   </div>
 </div>

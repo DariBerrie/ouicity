@@ -1,6 +1,9 @@
 <div class="container">
   <%= render "shared/offcanvas" %>
-  <h3 class="my-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
+  <%= link_to alerts_path, class: "text-decoration-none", style: "color: #dcd9d7" do %>
+    <i class="fa-solid fa-backward py-3"></i> Back to dashboard
+  <% end %>
+  <h3 class="mb-4">nº<%= @alert.id %> | <%= @alert.title %></h3>
   <div class="row d-flex">
     <div class="col-12 col-md-7 d-flex flex-row">
       <%= render "chatrooms/show" if @alert.chatroom %>
@@ -55,42 +58,43 @@
           <%# Assignments%>
           <% if @alert.assignment %>
             <p style="margin-bottom:0"><b>Assigned to: </b><%= @alert.assignment.worker.first_name %></p>
+            <%# Status %>
+            <div class='status-container'>
+              <%= render "shared/status_bar" %>
+              <% if current_user == @alert.assignment.worker %>
+                </div>
+                  <div class="container" >
+                    <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
+                      <div class="status-input">
+                        <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false %>
+                        <%=f.submit 'Update status', class: "btn btn-primary" %>
+                        <% end %>
+                      </div>
+                  </div>
+                 <% end %>
+           </div>
           <% else %>
               <%= simple_form_for [@alert, @assignment] do |f| %>
                 <div class="container mt-2 d-flex flex-row align-items-center">
                   <%=f.input :worker_id, label: false, collection: @workers, label_method: :first_name, value_method: :id,
                               input_html: { style: "background-color:white; margin-top:15px; margin-left:-8px; width:250px;" }%>
-                  <%= f.submit 'Assign', class: "btn btn-primary fw-bold text-white" %>
+                  <%= f.submit 'Assign', class: "btn btn-info fw-bold text-white" %>
                 </div>
               <% end %>
           <% end %>
-
-          <%# Status %>
-          <div class="status">
-          <div class='status-container'>
-            <%= render "shared/status_bar" %>
-            <% if current_user == @alert.assignment.worker %>
-              </div>
-                <div class="container" >
-                  <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
-                    <div class="status-input">
-                      <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false %>
-                      <%=f.submit 'Update status', class: "btn btn-primary" %>
-                      <% end %>
-                    </div>
-                </div>
-               <% end %>
-           </div>
-
+          
           <%# Subscriptions %>
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
+            <div>
             <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn btn-primary fw-bold text-white" %>
+            </div>
           <% else %>
+          <div>
             <%= simple_form_for [@alert, @subscriber] do |f| %>
-              <%= f.submit "Subscribe", class: "btn btn-primary fw-bold text-white" %>
+              <%= f.submit "  Subscribe  ", class: "btn btn-warning rounded-4 fw-bold text-white" %>
             <% end %>
+          </div>
           <% end %>
-          <%= link_to "All Alerts", alerts_path(), class: "btn btn-primary rounded-3 my-2 fw-bold text-white" %>
 
         </div>
       </div>
