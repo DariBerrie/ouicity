@@ -67,7 +67,7 @@
                     <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
                       <div class="status-input">
                         <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false %>
-                        <%=f.submit 'Update status', class: "btn btn-primary" %>
+                        <%=f.submit 'Update status', class: "btn btn-info text-white fw-bold" %>
                         <% end %>
                       </div>
                   </div>
