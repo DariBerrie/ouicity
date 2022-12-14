@@ -1,4 +1,4 @@
-<%# <div data-change-status-target="status"> %>
+<div data-submit-status-target="status">
   <% case @alert.status %>
   <% when "submitted" %>
     <span class="status-bar text-muted">
@@ -16,4 +16,4 @@
       Alert <%= @alert.status %>
     </span>
   <% end %>
-<%# </div> %>
+</div>
