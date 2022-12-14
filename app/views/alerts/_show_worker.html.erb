@@ -87,11 +87,7 @@
           <br>
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
             <div>
-<<<<<<< HEAD
-            <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn fw-bold text-white", style: "background-color: #FFCC8F" %>
-=======
               <%= link_to "Unsubscribe", subscriber_path(@subscriber), data: {turbo_method: :delete}, class: "btn rounded-4 fw-bold text-white", style: "background-color: #FFCC8F;" %>
->>>>>>> dd4ad3b7c6d2684a678741b91555485a8d4cb36d
             </div>
           <% else %>
           <div>
