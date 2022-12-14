@@ -16,7 +16,6 @@ class AlertsController < ApplicationController
         info_window: render_to_string(partial: "shared/info_window", locals: { alert: alert } )
       }
     end
-    @notifications = Notification.where(recipient: current_user)
   end
 
   def show
@@ -31,6 +30,7 @@ class AlertsController < ApplicationController
   def my_alerts
     @user = current_user
     @alerts = Alert.where(creator: @user)
+    @notifications = Notification.where(recipient: @user)
   end
 
   def new
