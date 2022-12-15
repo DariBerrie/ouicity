@@ -4,16 +4,16 @@
   <div class="d-flex flex-row flex-wrap">
     <div class="chart-container my-5 shadow-sm">
       <h5>Alert Status</h5>
-      <%=  column_chart Alert.group(:status).count, colors: ["#fd1f3d","#FEA82F","#1EDD88" ] %>
+      <%=  column_chart Alert.group(:status).count, colors: ["#fd1f3d","#FEA82F","#1EDD88" ], download: true %>
     </div>
     <div class="chart-container my-5 shadow-sm">
       <h5>Daily Submitted Alerts</h5>
-      <%= line_chart Alert.group_by_day(:created_at).count, colors: ["#FF6701"] %>
+      <%= line_chart Alert.group_by_day(:created_at).count, colors: ["#FF6701"], download: true %>
     </div>
     <div class="chart-container my-5 shadow-sm">
       <h5>Alerts by Category</h5>
       <%= line_chart Alert.group(:category).group_by_day(:created_at).count,
-          colors: ["#A760FF", "#fd1f3d", "#a1cefb","#FF6701","#FEA82F","#1EDD88" ] %>
+          colors: ["#A760FF", "#fd1f3d", "#a1cefb","#FF6701","#FEA82F","#1EDD88" ], download: true %>
     </div>
   </div>
 </div>

@@ -39,18 +39,17 @@ class AlertsController < ApplicationController
     @alert = Alert.new
   end
 
-  def create
-    @alert = Alert.create(alert_params)
-    @alert.upvotes = 0
-    @alert.status = 0
-    @alert.creator_id = current_user.id
-    if @alert.save
-      redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
-      @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}", alert_id: @alert.id)
-    else
-      render :new, status: :unprocessable_entity
-    end
-  end
+  # def create
+  #   @alert = Alert.create(alert_params)
+  #   @alert.upvotes = 0
+  #   @alert.status = 0
+  #   @alert.creator_id = current_user.id
+  #   if @alert.save
+  #     redirect_to alert_path(@alert), notice: "Thank you for sending your alert."
+  #   else
+  #     render :new, status: :unprocessable_entity
+  #   end
+  # end
 
   def edit
   end
