@@ -43,7 +43,7 @@
           <td><%= alert.category %></td>
           <td><%= link_to alert.title.capitalize, alert %></td>
           <td><%= alert.address %></td>
-          <td><span style="color:#d4cecd;"><%= alert.status %></span></td>
+          <td><span style="color:#d4cecd;"><%= alert.status.humanize(capitalize: false) %></span></td>
           <td><% if alert.assignment%>
                 <strong><%= alert.assignment.worker.first_name %></strong>
               <% else %>
