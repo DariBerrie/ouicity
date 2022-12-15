@@ -45,7 +45,7 @@
         </div>
 
         <div class="details-container">
-          <p class=" fs-5 fw-bold"><%= @alert.address %></p>
+          <p class="fs-5 fw-bold"><%= @alert.address %></p>
           <p><%= @alert.description %></p>
           <p><b>Category:</b> <%= @alert.category %><br>
           <% if @alert.creator == current_user %>
@@ -59,19 +59,21 @@
           <% if @alert.assignment %>
             <p style="margin-bottom:0"><b>Assigned to: </b><%= @alert.assignment.worker.first_name %></p>
             <%# Status %>
-            <div class='status-container'>
+            <div class="status-container"
+                 data-controller="submit-status">
               <%= render "shared/status_bar" %>
               <% if current_user == @alert.assignment.worker %>
+                <div class="status-form-container">
+                  <%= simple_form_for(@alert, defaults: { wrapper: false }, local: true,
+                                        data: { submit_status_target:"form",
+                                                action: "submit->submit-status#update"} ) do |f| %>
+                    <div class="status-input">
+                      <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false, id: "status-select" %>
+                      <%=f.submit 'Update status', class: "btn btn-info text-white fw-bold" %>
+                      <% end %>
+                    </div>
                 </div>
-                  <div class="container" >
-                    <%= simple_form_for(@alert, data: {change_status_target: "form", action: "change->change-status#update"}, defaults: { wrapper: false }) do |f| %>
-                      <div class="status-input">
-                        <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false %>
-                        <%=f.submit 'Update status', class: "btn btn-info text-white fw-bold" %>
-                        <% end %>
-                      </div>
-                  </div>
-                 <% end %>
+              <% end %>
            </div>
           <% else %>
               <%= simple_form_for [@alert, @assignment] do |f| %>
@@ -82,7 +84,7 @@
                 </div>
               <% end %>
           <% end %>
-          
+
           <%# Subscriptions %>
           <br>
           <% if @alert.subscribers.find { |s| s.subscriber_id == current_user.id } %>
