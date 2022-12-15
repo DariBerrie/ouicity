@@ -16,10 +16,10 @@
     <input type="hidden" id="alert-path" name="alert-path" value="<%= alerts_path %>">
     <div data-controller="alerts"  class="col-12 col-lg-6">
       <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
-        <h3>Hi <% if current_user %>
+        <h3>Bonjour <% if current_user %>
                   <%= current_user.first_name %>
                   <% else %>
-                  <%= "there" %>
+                  <%= "!" %>
                   <% end %>
         !</h3>
         <h4>Can you tell us where the issue is?</h4>
