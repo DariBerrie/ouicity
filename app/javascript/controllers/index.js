@@ -22,6 +22,9 @@ application.register("hello", HelloController)
 import MapController from "./map_controller"
 application.register("map", MapController)
 
+import SubmitStatusController from "./submit_status_controller"
+application.register("submit-status", SubmitStatusController)
+
 import ToastController from "./toast_controller"
 application.register("toast", ToastController)
 
