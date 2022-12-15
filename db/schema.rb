@@ -99,7 +99,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_085154) do
     t.index ["worker_id"], name: "index_messages_on_worker_id"
   end
 
-<<<<<<< HEAD
   create_table "notifications", force: :cascade do |t|
     t.string "recipient_type", null: false
     t.bigint "recipient_id", null: false
@@ -121,8 +120,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_13_085154) do
     t.index ["searchable_type", "searchable_id"], name: "index_pg_search_documents_on_searchable"
   end
 
-=======
->>>>>>> bdebceacc8be41cb0fed720a7f82f3fb150cef88
   create_table "subscribers", force: :cascade do |t|
     t.bigint "subscriber_id", null: false
     t.datetime "created_at", null: false
