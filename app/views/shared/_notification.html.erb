@@ -1,20 +1,29 @@
 <%= turbo_stream_from current_user, :notifications %>
-<% unless @notifications.last.read? %>
-  <div
-    style="position:absolute; top: 88px; right:8px;width:300px;z-index:1;"
-    id="notification"
-    data-controller="notification"
-    data-notification-delay-value="6000"
-    class="transition transform duration-1000 bg-white shadow-sm rounded-4 p-3"
-    data-transition-enter-from="opacity-0 translate-x-6"
-    data-transition-enter-to="opacity-100 translate-x-0"
-    data-transition-leave-from="opacity-100 translate-x-0"
-    data-transition-leave-to="opacity-0 translate-x-6">
-      <div class="notification-details d-flex flex-row justify-content-evenly">
-        <button class="close-button text-primary bg-white border-0 pe-3 align-self-start"
-                data-action="notification#hide"><i class="fa-solid fa-circle-xmark"></i></button>
-        <%=link_to "#{@notifications.last.to_notification.message}", alert_path(@notifications.last.params[:alert]) %>
-        <% @notifications.last.mark_as_read! %>
+<% if @notifications.last.read? %>
+  <button type="button" class="btn" id="liveToastBtn">
+    <i class="fa-solid fa-bell fs-2"></i></button>
+  <div class="toast-container w-75">
+    <div id="liveToast" class="toast align-items-center text-bg-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body d-flex flex-row justify-content-between align-items-center">
+        <p>You're up to date on your alerts!</p>
+        <button type="button" class="btn-close align-self-start" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <button type="button" class="btn" id="liveToastBtn">
+    <i class="fa-solid fa-bell fs-2 fa-shake" style="--fa-animation-duration:4s"></i></button>
+    <div class="toast-container">
+      <div id="liveToast" class="toast align-items-center text-bg-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Notifications</strong>
+          <small> <%= @time_ago %> minutes ago </small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          <%=link_to "#{@notifications.last.to_notification.message}", alert_path(@notifications.last.params[:alert]) %>
+          <% @notifications.last.mark_as_read! %>
+        </div>
       </div>
     </div>
 <% end %>
