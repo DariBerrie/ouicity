@@ -121,6 +121,9 @@ GEM
     faker (3.0.0)
       i18n (>= 1.8.11, < 2)
     ffi (1.15.5)
+    ffi-compiler (1.0.1)
+      ffi (>= 1.0.0)
+      rake
     font-awesome-sass (6.2.1)
       sassc (~> 2.0)
     geocoder (1.8.1)
@@ -128,9 +131,15 @@ GEM
       activesupport (>= 5.0)
     groupdate (6.1.0)
       activesupport (>= 5.2)
+    http (5.1.0)
+      addressable (~> 2.8)
+      http-cookie (~> 1.0)
+      http-form_data (~> 2.2)
+      llhttp-ffi (~> 0.4.0)
     http-accept (1.7.0)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
+    http-form_data (2.3.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
     io-console (0.5.11)
@@ -141,6 +150,9 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.0.3)
       railties (>= 6.0.0)
+    llhttp-ffi (0.4.0)
+      ffi-compiler (~> 1.0)
+      rake (~> 13.0)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -174,6 +186,9 @@ GEM
       racc (~> 1.4)
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
+    noticed (1.6.0)
+      http (>= 4.0.0)
+      rails (>= 5.2.0)
     orm_adapter (0.5.0)
     pg (1.4.5)
     pg_search (2.3.6)
@@ -303,6 +318,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   mail_form
+  noticed
   pg (~> 1.1)
   pg_search
   puma (~> 5.0)

@@ -1,0 +1,26 @@
+@keyframes new {
+  from {color: $cream;}
+  to {color: $pink}
+}
+
+#liveToastBtn {
+  margin-top: 2em;
+  padding: 0 1em;
+  position:absolute;
+  top:48px;
+  right:0px;
+}
+
+i.fa-solid.fa-bell {
+  color: $pink;
+}
+
+.toast {
+  background-color:white;
+  opacity: 1 !important;
+  border-radius: 16px;
+
+  .toast-body {
+    justify-self: center;
+  }
+}

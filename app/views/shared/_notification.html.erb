@@ -1,0 +1,29 @@
+<%= turbo_stream_from current_user, :notifications %>
+<% if @notifications.last.read? %>
+  <button type="button" class="btn" id="liveToastBtn">
+    <i class="fa-solid fa-bell fs-2"></i></button>
+  <div class="toast-container w-75">
+    <div id="liveToast" class="toast align-items-center text-bg-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-body d-flex flex-row justify-content-between align-items-center">
+        <p>You're up to date on your alerts!</p>
+        <button type="button" class="btn-close align-self-start" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <button type="button" class="btn" id="liveToastBtn">
+    <i class="fa-solid fa-bell fs-2 fa-shake" style="--fa-animation-duration:4s"></i></button>
+    <div class="toast-container">
+      <div id="liveToast" class="toast align-items-center text-bg-white border-0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+          <strong class="me-auto">Notifications</strong>
+          <small> <%= @time_ago %> minutes ago </small>
+          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+          <%=link_to "#{@notifications.last.to_notification.message}", alert_path(@notifications.last.params[:alert]) %>
+          <% @notifications.last.mark_as_read! %>
+        </div>
+      </div>
+    </div>
+<% end %>
