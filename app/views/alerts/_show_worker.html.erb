@@ -68,7 +68,7 @@
                                         data: { submit_status_target:"form",
                                                 action: "submit->submit-status#update"} ) do |f| %>
                     <div class="status-input">
-                      <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false, id: "status-select" %>
+                      <%=f.input :status, collection: Alert.statuses.to_a.collect{|c| [c[0].humanize(capitalize: false), c[0]]}, label: false, id: "status-select", class: "bg-white" %>
                       <%=f.submit 'Update status', class: "btn btn-info text-white fw-bold" %>
                       <% end %>
                     </div>
