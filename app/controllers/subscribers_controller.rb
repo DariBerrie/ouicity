@@ -9,6 +9,5 @@ class SubscribersController < ApplicationController
   def destroy
     @subscriber = Subscriber.find(params[:id])
     @subscriber.destroy
-    redirect_to alert_path(@alert.id)
   end
 end
