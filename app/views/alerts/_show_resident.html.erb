@@ -44,7 +44,7 @@
           <%= render 'shared/like_link', alert: @alert %> <%= render 'shared/likes', alert: @alert %></p>
 
           <% if @alert.creator == current_user %>
-            <%= link_to "Edit this alert", edit_alert_path(@alert), class: "btn btn-warning rounded-3 my-2 fw-bold text-white" %>
+            <%= link_to "Edit this alert", edit_alert_path(@alert), class: "btn btn-info rounded-4 my-2 fw-bold text-white" %>
           <% end %>
         </div>
       </div>

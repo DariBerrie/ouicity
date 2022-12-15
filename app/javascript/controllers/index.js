@@ -13,9 +13,6 @@ application.register("alert-show-map", AlertShowMapController)
 import AlertsController from "./alerts_controller"
 application.register("alerts", AlertsController)
 
-import ChangeStatusController from "./change_status_controller"
-application.register("change-status", ChangeStatusController)
-
 import ChatroomSubscriptionController from "./chatroom_subscription_controller"
 application.register("chatroom-subscription", ChatroomSubscriptionController)
 
@@ -27,6 +24,9 @@ application.register("map", MapController)
 
 import SubmitStatusController from "./submit_status_controller"
 application.register("submit-status", SubmitStatusController)
+
+import ToastController from "./toast_controller"
+application.register("toast", ToastController)
 
 import TooltipController from "./tooltip_controller"
 application.register("tooltip", TooltipController)

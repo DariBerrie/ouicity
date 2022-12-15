@@ -4,7 +4,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["form", "status"]
   connect() {
-    console.log("submit on status connected part 3")
+    console.log("submit on status connected")
   }
   update(event) {
     event.preventDefault()
