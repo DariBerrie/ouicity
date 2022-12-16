@@ -1,5 +1,5 @@
 <%= turbo_stream_from current_user, :notifications %>
-<% if @notifications.last.read? %>
+<% if @notifications.last == nil || @notifications.last.read? %>
   <button type="button" class="btn" id="liveToastBtn">
     <i class="fa-solid fa-bell fs-2"></i></button>
   <div class="toast-container w-75">

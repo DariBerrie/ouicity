@@ -31,7 +31,9 @@ class AlertsController < ApplicationController
     @user = current_user
     @alerts = Alert.where(creator: @user)
     @notifications = Notification.where(recipient: @user)
-    @time_ago = ((Time.new - @notifications.last.created_at) / 1.minute).round
+    if @notifications.any?
+      @time_ago = ((Time.new - @notifications.last.created_at) / 1.minute).round
+    end
   end
 
   def new

@@ -2,10 +2,9 @@ Rails.application.routes.draw do
   get 'errors/not_found'
   get 'errors/internal_server_error'
   root to: "pages#home"
+  get 'about', to: "pages#about"
 
   devise_for :users
-
-  resources :pages, only: :index
   resources :contacts, only: [:new, :create]
   # Chatroom routes
   resources :chatrooms, only: :show do
