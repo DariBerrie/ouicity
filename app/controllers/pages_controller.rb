@@ -14,7 +14,6 @@ class PagesController < ApplicationController
     end
   end
 
-  def index
-    @alerts = Alert.all
+  def about
   end
 end
