@@ -11,10 +11,11 @@ class User < ApplicationRecord
   has_many :subscribers
   has_many :notifications, as: :recipient, dependent: :destroy
 
+  acts_as_voter
+
   enum role: { resident: 0, worker: 1 }
 
   def set_default_role
     self.role = 0
   end
-  acts_as_voter
 end
