@@ -1,5 +1,5 @@
 Ouicity is a project conceived during Le Wagon's Batch #986 Fullstack Web Development bootcamp. 
-The app's purpose is to connect residents with city management and planning institutions using an interactive approach to that gets both sides involved in caring for their city. 
+The app's purpose is to connect residents with city management and planning institutions using an interactive approach that gets both sides involved in caring for their city. 
 
 Two sides are represented on this app. The front-facing side used by residents is intended for mobile use. The back-face side for the city is intended for desktop use.
 
