@@ -3,7 +3,7 @@ The app's purpose is to connect residents with city management and planning inst
 
 Two sides are represented on this app. The front-facing side used by residents is intended for mobile use. The back-face side for the city is intended for desktop use.
 
-This was a great way for the team to combine what we've learned over the course of six months. Try it out and let us know what you think!
+This was a great way for the team to combine what we've learned over the course of six months. Try it out, or [check out our demo](https://www.youtube.com/watch?v=ylBPh9zTMaM&ab_channel=LeWagon) and let us know what you think!
 
 <img width="1512" alt="Screen Shot 2022-12-16 at 08 44 59" src="https://user-images.githubusercontent.com/59029920/208048927-9ec6ee0e-4c2e-44bf-a7a9-155433e054a2.png">
 
