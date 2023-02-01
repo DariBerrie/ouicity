@@ -4,7 +4,8 @@
     <div class="col-12 col-lg-6">
       <div class="map-container">
         <div class="map-size"
-          style="border-radius:24px; margin-top:32px;"
+          style="border-radius:24px; margin-top:32px;
+          -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);"
           data-controller="map"
           data-map-alerts-value="<%= @alerts.to_json(include:{ photos: { methods: [:url] }}) %>"
           data-map-markers-value="<%= @markers.to_json %>"

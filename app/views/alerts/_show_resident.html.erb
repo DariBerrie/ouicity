@@ -51,7 +51,8 @@
 
 
       <div class="map-container d-flex flex-column align-items-center">
-        <div style="width: 100%; height: 300px; border-radius:25px;"
+        <div style="width: 100%; height: 300px; border-radius:25px;
+                    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);"
           data-controller="alert-show-map"
           data-alert-show-map-marker-value="<%= @marker.to_json %>"
           data-alert-show-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
