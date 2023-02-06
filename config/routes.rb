@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   get 'about', to: "pages#about"
 
   devise_for :users
-  resources :contacts, only: [:new, :create]
-  # Chatroom routes
+  resources :contacts, only: :create
+
   resources :chatrooms, only: :show do
     resources :chat_messages, only: :create
   end
@@ -35,7 +35,4 @@ Rails.application.routes.draw do
   match "/500", to: "errors#internal_server_error", via: :all
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

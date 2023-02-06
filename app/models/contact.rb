@@ -8,9 +8,10 @@ class Contact < MailForm::Base
   # in ActionMailer accepts.
   def headers
     {
-      subject: "Contact Form Inquiry",
-      to: "your.email@address.com",
-      from: %("#{name}" <#{email}>)
+      subject: "What do you think of our app?",
+      to: "hello@dari.codes",
+      from: "darigoldman@gmail.com",
+      reply_to: %("#{name}" <#{email}>)
     }
   end
 end
