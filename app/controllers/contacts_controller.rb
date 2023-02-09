@@ -1,6 +1,6 @@
 ## This is for the contact form on the homepage
 class ContactsController < ApplicationController
-  skip_before_action :authenticate_user!
+  skip_before_action :authenticate_user!, only: [:create]
 
   def create
     @contact = Contact.new(params[:contact])
