@@ -30,7 +30,7 @@
           <i class="fa-solid fa-circle-chevron-down"></i></a></h5>
       </div>
 
-      <div id="collapseList" class="listings collapse collapsing">
+      <div id="collapseList" class="listings collapse">
         <% @alerts.last(3).each do |alert| %>
           <%= render 'shared/alert_banner', alert: alert %>
         <% end %>
