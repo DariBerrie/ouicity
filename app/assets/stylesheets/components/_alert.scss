@@ -1,10 +1,12 @@
 .alert {
   z-index: 1000;
   // width: 100%;
-  background: #E3F3FF;
+  background: #FFFFFF;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  border-radius: 24px;
   text-align: center;
   position: fixed;
-  bottom: 100px;
+  top: 9vh;
   right: 50px;
   // z-index: 1000;
 }

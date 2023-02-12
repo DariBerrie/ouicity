@@ -15,7 +15,7 @@
               <%= f.input :photos, as: :file, input_html: { multiple: true } %>
             </div>
             <div class='buttons'>
-              <%= link_to "#", id: "new-alert-btn", class: "left btn btn-info fw-bold text-white" do %>
+              <%= link_to new_intake_category_path, id: "new-alert-btn", class: "left btn btn-info fw-bold text-white" do %>
                 <i class="fa-solid fa-backward"></i>
               <% end %>
               <%= f.submit 'Add Alert', id: "new-alert-btn", class: "btn btn-primary fw-bold text-white" %>

@@ -59,8 +59,14 @@
   padding-bottom: 36px;
 }
 
-.listings.hidden {
-  display: none;
+.collapse:not(.show) {
+    display: none;
+}
+.collapsing {
+  $transition-collapse: height .25s ease;
+  height: 0;
+  overflow: hidden;
+  @include transition($transition-collapse);
 }
 
 .listings .card {

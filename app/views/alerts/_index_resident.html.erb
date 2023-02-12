@@ -17,12 +17,7 @@
     <input type="hidden" id="alert-path" name="alert-path" value="<%= alerts_path %>">
     <div data-controller="alerts"  class="col-12 col-lg-6">
       <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
-        <h3>Bonjour <% if current_user %>
-                  <%= current_user.first_name %>
-                  <% else %>
-                  <%= "!" %>
-                  <% end %>
-        !</h3>
+        <h3>Bonjour <%= current_user ? current_user.first_name : "" %> !</h3>
         <h4>Can you tell us where the issue is?</h4>
         <p>Don't see your issue listed here? <%= link_to "Send an alert.", new_intake_category_path %></p>
         <div id="geocoder" class="geocoder"
@@ -31,12 +26,11 @@
 
       <div class="d-flex justify-content-center mt-4 ">
         <h5 id="alerts-heading">Most recent alerts
-          <a data-action="click->alerts#showAlertList"
-          class="fs-3 toggle">
+          <a data-bs-toggle="collapse" href="#collapseList" role="button" aria-expanded="false" aria-controls="collapseExample">
           <i class="fa-solid fa-circle-chevron-down"></i></a></h5>
       </div>
 
-      <div data-alerts-target="list" id="listings" class="listings">
+      <div id="collapseList" class="listings collapse">
         <% @alerts.last(3).each do |alert| %>
           <%= render 'shared/alert_banner', alert: alert %>
         <% end %>
