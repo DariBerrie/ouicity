@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     @contact.request = request
     if @contact.deliver
-      redirect_to root_path, notice: "Message sent!"
+      redirect_to root_path, notice: "Thank you for your message!"
     else
       render :new, status: :unprocessable_entity
     end

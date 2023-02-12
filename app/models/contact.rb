@@ -11,7 +11,7 @@ class Contact < MailForm::Base
     {
       subject: "What do you think of our app?",
       to: "hello@dari.codes",
-      from: "darigoldman@gmail.com",
+      from: "contact@ouicity.me",
       reply_to: %("#{name}" <#{email}>)
     }
   end

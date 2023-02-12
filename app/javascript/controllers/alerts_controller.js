@@ -1,13 +1,15 @@
-import { Controller } from "@hotwired/stimulus";
+// import { Controller } from "@hotwired/stimulus";
 
-export default class extends Controller {
-  static targets = ["list"];
-  connect() {
+// export default class extends Controller {
+//   static targets = ["list"];
+//   connect() {
+//     this.showAlertList();
+//   }
 
-    this.showAlertList();
-  }
-
-  showAlertList(event) {
-    this.listTarget.classList.toggle("hidden");
-  }
-}
+//   showAlertList(event) {
+//     // Window.scrollTo({
+//     //   top: this.listTarget.scrollTop,
+//     //   behavior: 'smooth'
+//     // })
+//   }
+// }
