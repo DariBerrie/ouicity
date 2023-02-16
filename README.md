@@ -14,4 +14,5 @@ This was a great way for the team to combine what we've learned over the course 
 
 🌟Fun fact: The name "Ouicity" was inspired by "ouistiti" the word said before taking pictures in France. It's equivalent is "Cheese!" in English. Ouisiti is actually a kind of monkey and we'd like to think that our logo (and app) make you smile when you see it!
 
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+<img width="1512" alt="Screen Shot 2023-02-16 at 09 25 22" src="https://user-images.githubusercontent.com/59029920/219411532-5f1d56ec-5979-4995-999a-479013883f84.png">
+
