@@ -63,3 +63,7 @@ en:
       not_saved:
         one: "1 error prohibited this %{resource} from being saved:"
         other: "%{count} errors prohibited this %{resource} from being saved:"
+      password_too_short: "must be at least %{count} characters"
+      password_too_long: "must be at most %{count} characters"
+      password_requires_letters_and_numbers: "must contain at least one letter and one number"
+      password_requires_special_characters: "must contain at least one special character"

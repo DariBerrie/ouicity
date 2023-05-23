@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :chat_messages
   has_many :subscribers
   has_many :notifications, as: :recipient, dependent: :destroy
+  validates :password, presence: true, length: { minimum: 8, maximum: 36 }, password: true
 
   acts_as_voter
 
