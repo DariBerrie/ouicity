@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  before_create :set_default_role
+  scope :resident_users, -> { where(role: 0) }
+  scope :worker_users, -> {where(role: 1)}
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :alerts
@@ -15,8 +16,4 @@ class User < ApplicationRecord
   acts_as_voter
 
   enum role: { resident: 0, worker: 1 }
-
-  def set_default_role
-    self.role = 0
-  end
 end
