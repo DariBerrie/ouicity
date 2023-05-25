@@ -12,8 +12,6 @@ module Intake
         full_params = detail_params.merge(
           category: session['category']['category'],
           creator_id: current_user.id,
-          status: 0,
-          upvotes: 0
         )
         @alert = Alert.create!(full_params)
         @chatroom = Chatroom.create!(name: "Chat for Alert #{@alert.id}", alert_id: @alert.id)
@@ -31,8 +29,6 @@ module Intake
         :title,
         :description,
         :address,
-        :status,
-        :upvotes,
         photos: []
       )
     end
