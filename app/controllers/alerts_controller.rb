@@ -57,20 +57,33 @@ class AlertsController < ApplicationController
   end
 
   def update
-    if current_user == 'resident'
-      if @alert.update(alert_params)
-        redirect_to alert_path(@alert), notice: "Alert updated successfully."
-      else
-        render :edit, status: :unprocessable_entity
-      end
+    if @alert.update(alert_params)
+      @alert.photos.attach(params[:alert][:photos]) if params[:alert][:photos].present?
+      redirect_to alert_path(@alert), notice: "Alert updated successfully."
     else
-      @alert.update(alert_params)
-
-      respond_to do |format|
-        format.html { redirect_to alert_path(@alert), notice: "Alert updated successfully." }
-        format.text { render partial: "shared/status_bar", locals: {alert: @alert}, formats: [:html] }
-      end
+      render :edit, status: :unprocessable_entity
     end
+
+    # if current_user == 'resident'
+    #   if @alert.update(alert_params)
+    #     redirect_to alert_path(@alert), notice: "Alert updated successfully."
+    #   else
+    #     render :edit, status: :unprocessable_entity
+    #   end
+    # else
+    #   @alert.update(alert_params)
+
+    #   respond_to do |format|
+    #     format.html { redirect_to alert_path(@alert), notice: "Alert updated successfully." }
+    #     format.text { render partial: "shared/status_bar", locals: {alert: @alert}, formats: [:html] }
+    #   end
+    # end
+       # params[:alert][:photos].each { |photo| @alert.photos.attach(photo) } if params[:alert][:photos].present?
+
+        # respond_to do |format|
+        #   format.html { redirect_to alert_path(@alert), notice: "Alert updated successfully." }
+        #   format.text { render partial: "shared/status_bar", locals: {alert: @alert}, formats: [:html] }
+        # end
   end
 
   def destroy
