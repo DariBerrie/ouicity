@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.0"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.1.3"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -16,7 +16,8 @@ gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
-gem "jsbundling-rails"
+# gem "jsbundling-rails"
+gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
@@ -46,20 +47,24 @@ gem "bootsnap", require: false
 gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-# gem "image_processing", "~> 1.2"
+gem "image_processing", "~> 1.2"
+gem "cloudinary"
 
 gem "devise"
-gem "autoprefixer-rails"
-gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
-gem "cloudinary"
 gem "mail_form"
+
+gem "autoprefixer-rails"
+gem "bootstrap"
+gem "font-awesome-sass", "~> 6.1"
+
 gem "geocoder"
 gem "acts_as_votable"
 gem "pg_search"
 gem "chartkick"
 gem "groupdate"
 gem "noticed"
+gem "faker"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -86,5 +91,3 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
-
-gem "faker"
