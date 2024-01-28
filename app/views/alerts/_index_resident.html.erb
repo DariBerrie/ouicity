@@ -18,7 +18,7 @@
     
     <div class="col-12 col-lg-6">
       <div class="search-box mt-3 shadow-sm d-flex flex-column w-100">
-        <h3>Hello <%= current_user ? current_user.first_name : "" %> !</h3>
+        <h3>Bonjour <%= current_user ? current_user.first_name : "" %> !</h3>
         <h4>Can you tell us where the issue is?</h4>
         <p>Don't see your issue listed here? <%= link_to "Send an alert.", new_intake_category_path %></p>
        

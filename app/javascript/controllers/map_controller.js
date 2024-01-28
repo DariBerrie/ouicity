@@ -1,7 +1,4 @@
 import { Controller } from "@hotwired/stimulus"
-import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder"
-
-// Connects to data-controller="map"
 export default class extends Controller {
   static values = {
     apiKey: String,
@@ -11,7 +8,7 @@ export default class extends Controller {
   static targets = ["map"]
 
   connect() {
-    console.log("Mappa controller connected")
+    console.log("Maps controller connected")
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
@@ -54,6 +51,7 @@ export default class extends Controller {
 
   #buildAlertList(alerts) {
     const recentAlerts = document.querySelector('.recent-alerts')
+    console.log("recent alerts", recentAlerts)
     const alertsHeading = document.getElementById('alerts-heading')
     this.buildAlertsHeading()
   
