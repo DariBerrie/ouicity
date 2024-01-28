@@ -1,6 +1,5 @@
 .alert {
   z-index: 1000;
-  // width: 100%;
   background: #FFFFFF;
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
   border-radius: 24px;
@@ -8,20 +7,36 @@
   position: fixed;
   top: 9vh;
   right: 50px;
-  // z-index: 1000;
+}
+
+.listing {
+  display: flex;
+  flex-direction: row;
+  box-shadow: 0 10px 30px rgba(0,0,0,.1);
+  padding: 3vh 4vw;
+  margin: 2vh 0;
+  border-radius: 24px;
+  border: none;
+}
+.listing-img {
+  margin-right: 3vw;
+  width:80px; 
+  height:80px; 
+  border-radius:50%; 
+  object-fit:fill
 }
 
 .alerts {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 16px;
-  border-radius: 25px;
+  border-radius: 24px;
   padding: 36px;
 }
 
 .alert-card {
   border: 1px solid rgb(208, 207, 207);
-  border-radius: 25px;
+  border-radius: 24px;
   padding: 16px 16px;
   margin: 8px 0 8px 0;
   width: 500px;

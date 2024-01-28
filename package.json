@@ -4,11 +4,11 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.1.1",
     "@hotwired/turbo-rails": "^7.2.4",
-    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
+    "@mapbox/mapbox-gl-geocoder": "^5.0.2",
     "@popperjs/core": "^2.11.6",
     "@rails/actioncable": "^7.0.4",
     "bootstrap": "^5.2.2",
-    "chart.js": "^4.0.1",
+    "chart.js": "^4.4.1",
     "chartkick": "^4.2.0",
     "stimulus-carousel": "^4.0.0",
     "stimulus-notification": "^2.1.0",

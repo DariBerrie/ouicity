@@ -185,12 +185,6 @@ GEM
     nokogiri (1.13.9)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.9-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.13.9-x86_64-linux)
-      racc (~> 1.4)
     noticed (1.6.0)
       http (>= 4.0.0)
       rails (>= 5.2.0)
@@ -359,7 +353,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.1.2p20
+   ruby 3.3.0p0
 
 BUNDLED WITH
    2.3.24
