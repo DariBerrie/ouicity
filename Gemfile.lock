@@ -157,14 +157,16 @@ GEM
     http-form_data (2.3.0)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
+    importmap-rails (2.0.1)
+      actionpack (>= 6.0.0)
+      activesupport (>= 6.0.0)
+      railties (>= 6.0.0)
     io-console (0.5.11)
     irb (1.4.3)
       reline (>= 0.3.0)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
-    jsbundling-rails (1.0.3)
-      railties (>= 6.0.0)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -362,8 +364,8 @@ DEPENDENCIES
   font-awesome-sass (~> 6.1)
   geocoder
   groupdate
+  importmap-rails
   jbuilder
-  jsbundling-rails
   mail_form
   noticed
   pg (~> 1.1)
