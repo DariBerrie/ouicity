@@ -96,6 +96,7 @@ export default class extends Controller {
     }
 
     geocoder.on('result', (event) => {
+      console.log(event)
       sessionStorage.setItem("addressEvent", event.result.place_name)
 
       const searchResult = event.result.geometry

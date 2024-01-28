@@ -1,5 +1,5 @@
 <div class="listing card">
-  <%= cl_image_tag(alert.photos[0].key) %>
+  <%= cl_image_tag(alert.photos[0].key, class: "listing-img") %>
   <div class="listing-details">
     <%= link_to "#{alert.address}", alert %><br>
     <strong><%=alert.title %></strong>
