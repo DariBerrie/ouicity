@@ -1,0 +1,31 @@
+.container
+  = render "shared/offcanvas"
+  .row.align-items-center
+    .col-12.col-lg-6
+      .map-container
+        .map-size{"data-controller" => "map", "data-map-alerts-value" => "#{@alerts.to_json(include:{ photos: { methods: [:url] }})}", "data-map-api-key-value" => "#{ENV['MAPBOX_API_KEY']}", "data-map-markers-value" => "#{@markers.to_json}", "data-map-target" => "map", style: "border-radius:24px; margin-top:32px;\r\n          -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);"}
+    %input#alert-path{name: "alert-path", type: "hidden", value: alerts_path}/
+    .col-12.col-lg-6
+      .search-box.mt-3.shadow-sm.d-flex.flex-column.w-100
+        %h3
+          Bonjour #{current_user ? current_user.first_name : ""} !
+        %h4 Can you tell us where the issue is?
+        %p
+          Don't see your issue listed here? #{link_to "Send an alert.", new_intake_category_path}
+        #geocoder.geocoder{"data-action" => "submit->map#buildAlertList"}
+      .d-flex.justify-content-center.mt-4
+        %h5#alerts-heading Most recent alerts
+        %a{"aria-controls" => "collapseList", "aria-expanded" => "false", "data-bs-toggle" => "collapse", href: "#collapseList", role: "button"}
+          %i.fa-solid.fa-circle-chevron-down.ps-2
+      #collapseList.recent-alerts.collapse
+        - @alerts.last(3).each do |alert|
+          = render 'shared/alert_banner', alert: alert
+  %template#listingTemplate
+    .listing.card>
+      %img.listing-img{src: ""}/
+      .listing-details
+        %a{href: ""} Address
+        %br/
+        %span.title.fw-bold Title
+        %p.description.fs-6 Description
+        %span.distance.fw-bold Distance kms
